@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Singular Values Measure Stretch</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Linear Algebra as Geometry</p>
-  <nav aria-label="series essays"><a  href="/essays/eigenvectors-are-directions-that-survive.html">Eigenvectors Are Directions That Survive</a><a class="active" href="/essays/singular-values-measure-stretch.html">Singular Values Measure Stretch</a></nav>
+  <nav aria-label="series essays"><a  href="/monocurl-essays/essays/eigenvectors-are-directions-that-survive.html">Eigenvectors Are Directions That Survive</a><a class="active" href="/monocurl-essays/essays/singular-values-measure-stretch.html">Singular Values Measure Stretch</a></nav>
 </section>
     </div>
   </aside>
@@ -111,7 +112,7 @@ $$</div><p>This is stronger than diagonalization in one important way. Diagonali
 $$</div><p>So the directions that maximize and minimize output length are eigenvectors of $A^TA$. Since $A^TA$ is symmetric, its eigenvectors are perpendicular and its eigenvalues are real and nonnegative.</p><p>The singular values are square roots of those eigenvalues.</p><div class="math-display">$$
 \sigma_i=\sqrt{\lambda_i(A^TA)}.
 $$</div><p>That formula is less important than the meaning. $A^TA$ asks, &quot;if I transform a vector and measure its squared length, which input directions make that number simple?&quot;</p><h2 id="not-just-a-factorization"><a class="header" href="#not-just-a-factorization">Not just a factorization</a></h2><p>Singular values tell you the numerical personality of a matrix.</p><p>If the largest singular value is huge, the matrix can magnify errors. If the smallest singular value is close to zero, the matrix nearly collapses some direction. If a singular value is exactly zero, information is lost completely along its corresponding input direction.</p><p>This is why SVD appears in data compression. An image, a sound, or a table of measurements can be viewed as a matrix. Large singular values capture large-scale structure. Small singular values often capture fine detail or noise. Keeping only the largest ones gives the closest low-rank approximation in a precise least-squares sense.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-singular-values-measure-stretch-2-a4570b9322c20ef7.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-singular-values-measure-stretch-2-a4570b9322c20ef7.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-singular-values-measure-stretch-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -127,7 +128,7 @@ $$</div><p>That formula is less important than the meaning. $A^TA$ asks, &quot;i
 </span><span class="mc-token mc-non-control-flow-keyword mc-token-slide">slide</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-text-literal mc-token-string-literal">&quot;ellipse axes&quot;</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-whitespace">    </span><span class="mc-token mc-control-flow mc-token-play">play</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Fade</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-float-literal">0.6</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span></code></pre></div></details>
 </figure><p>The SVD is therefore a way to ask a matrix what it does most strongly. It does not demand that directions stay parallel to themselves. It only asks how much each direction is stretched. For geometry, computation, and data, that is often the question you actually wanted.</p>
-    <nav class="footer-buttons"><a class="footer-button prev" href="/essays/eigenvectors-are-directions-that-survive.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Eigenvectors Are Directions That Survive</span></a><span class="footer-button-spacer"></span></nav>
+    <nav class="footer-buttons"><a class="footer-button prev" href="/monocurl-essays/essays/eigenvectors-are-directions-that-survive.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Eigenvectors Are Directions That Survive</span></a><span class="footer-button-spacer"></span></nav>
   </article>
 </div>
 </body>

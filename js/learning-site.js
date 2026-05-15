@@ -1,7 +1,5 @@
-import {
-  MonocurlWebGlRenderer,
-  createMonocurlLoop,
-} from "/vendor/monocurl/index.js";
+const SITE_BASE = normalizeSiteBase(globalThis.MONOCURL_ESSAYS_BASE_PATH || "/");
+const monocurlRuntime = import(`${SITE_BASE}vendor/monocurl/index.js`);
 
 document.addEventListener("click", async (event) => {
   const button = event.target.closest("[data-copy-code]");
@@ -52,6 +50,7 @@ async function mountSlideshow(block) {
     throw new Error("missing slideshow mount point");
   }
 
+  const { MonocurlWebGlRenderer, createMonocurlLoop } = await monocurlRuntime;
   const source = JSON.parse(sourceNode.textContent || "\"\"");
   const renderer = new MonocurlWebGlRenderer(canvas);
   const allow = new Set(
@@ -205,6 +204,12 @@ function reportRuntimeError(status, error) {
   if (!status) return;
   status.textContent = error instanceof Error ? error.message : String(error);
   status.classList.add("error");
+}
+
+function normalizeSiteBase(value) {
+  const source = String(value || "/").trim();
+  if (!source || source === "/") return "/";
+  return `/${source.replace(/^\/+|\/+$/g, "")}/`;
 }
 
 function renderSlides(host, slides, loop, currentSlideButton, selectSlide) {

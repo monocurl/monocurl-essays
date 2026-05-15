@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Monocurl Essays</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a class="active" href="/">Home</a>
-      <a  href="/essays/">Essays</a>
+      <a class="active" href="/monocurl-essays/">Home</a>
+      <a  href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,24 +42,24 @@
     <h1>Monocurl Essays</h1>
     <p class="hero-copy">Mathematical and related writings created with the <a href="https://www.npmjs.com/package/monocurl">Monocurl web runtime</a>.</p>
     <div class="hero-actions">
-      <a class="primary-action" href="/essays/">Read essays</a>
+      <a class="primary-action" href="/monocurl-essays/essays/">Read essays</a>
       <a class="ghost-action" href="https://www.monocurl.com">Create with Monocurl</a>
     </div>
   </section>
   <section class="home-section">
     <div class="section-head">
       <p class="eyebrow">featured</p>
-      <a href="/essays/">all essays</a>
+      <a href="/monocurl-essays/essays/">all essays</a>
     </div>
-    <div class="card-grid"><a class="content-card" href="/essays/random-walks-become-bells.html">
+    <div class="card-grid"><a class="content-card" href="/monocurl-essays/essays/random-walks-become-bells.html">
   <span>Probability as Geometry</span>
   <strong>Random Walks Become Bells</strong>
   <small>Repeated tiny independent steps produce a bell curve because convolution smooths and spreads probability in a rigid way.</small>
-</a><a class="content-card" href="/essays/bayes-tilts-belief.html">
+</a><a class="content-card" href="/monocurl-essays/essays/bayes-tilts-belief.html">
   <span>Probability as Geometry</span>
   <strong>Bayes Tilts Belief</strong>
   <small>Bayes' rule is not a magic formula. It is a geometric reweighting of a prior shape by the evidence it predicts.</small>
-</a><a class="content-card" href="/essays/conformal-maps-keep-tiny-angles.html">
+</a><a class="content-card" href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html">
   <span>Geometry of Curves and Maps</span>
   <strong>Conformal Maps Keep Tiny Angles</strong>
   <small>Complex functions can twist and stretch the plane while preserving the angle between infinitesimal curves.</small>
@@ -68,35 +69,35 @@
     <div class="section-head">
       <p class="eyebrow">recent</p>
     </div>
-    <nav class="essay-index"><a class="essay-row" href="/essays/bayes-tilts-belief.html">
+    <nav class="essay-index"><a class="essay-row" href="/monocurl-essays/essays/bayes-tilts-belief.html">
   <span>Probability as Geometry</span>
   <strong>Bayes Tilts Belief</strong>
   <small>Bayes' rule is not a magic formula. It is a geometric reweighting of a prior shape by the evidence it predicts.</small>
-</a><a class="essay-row" href="/essays/conformal-maps-keep-tiny-angles.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html">
   <span>Geometry of Curves and Maps</span>
   <strong>Conformal Maps Keep Tiny Angles</strong>
   <small>Complex functions can twist and stretch the plane while preserving the angle between infinitesimal curves.</small>
-</a><a class="essay-row" href="/essays/curvature-is-turning.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/curvature-is-turning.html">
   <span>Geometry of Curves and Maps</span>
   <strong>Curvature Is Turning Per Unit Distance</strong>
   <small>A curve is not just a path through points. It carries a hidden clock that measures how quickly its tangent direction turns.</small>
-</a><a class="essay-row" href="/essays/eigenvectors-are-directions-that-survive.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/eigenvectors-are-directions-that-survive.html">
   <span>Linear Algebra as Geometry</span>
   <strong>Eigenvectors Are Directions That Survive</strong>
   <small>A matrix can shear, rotate, and stretch the plane, but a few special directions pass through unchanged except for scale.</small>
-</a><a class="essay-row" href="/essays/fourier-series-listen-to-shapes.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/fourier-series-listen-to-shapes.html">
   <span>Signals and Spectra</span>
   <strong>Fourier Series Listen To Shapes</strong>
   <small>A jagged function can be understood as a chord of pure waves, each carrying a frequency and an amplitude.</small>
-</a><a class="essay-row" href="/essays/gauss-bonnet-counts-turning.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/gauss-bonnet-counts-turning.html">
   <span>Geometry of Curves and Maps</span>
   <strong>Gauss Bonnet Counts Turning</strong>
   <small>The total curvature of a surface is tied to topology because local turning has a global accounting rule.</small>
-</a><a class="essay-row" href="/essays/inversion-turns-lines-into-circles.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/inversion-turns-lines-into-circles.html">
   <span>Geometry of Curves and Maps</span>
   <strong>Inversion Turns Lines Into Circles</strong>
   <small>The map z -&gt; 1/z looks strange until you watch a straight line become a circle tangent to the origin.</small>
-</a><a class="essay-row" href="/essays/random-walks-become-bells.html">
+</a><a class="essay-row" href="/monocurl-essays/essays/random-walks-become-bells.html">
   <span>Probability as Geometry</span>
   <strong>Random Walks Become Bells</strong>
   <small>Repeated tiny independent steps produce a bell curve because convolution smooths and spreads probability in a rigid way.</small>

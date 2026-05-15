@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Gauss Bonnet Counts Turning</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Geometry of Curves and Maps</p>
-  <nav aria-label="series essays"><a  href="/essays/curvature-is-turning.html">Curvature Is Turning Per Unit Distance</a><a  href="/essays/inversion-turns-lines-into-circles.html">Inversion Turns Lines Into Circles</a><a  href="/essays/conformal-maps-keep-tiny-angles.html">Conformal Maps Keep Tiny Angles</a><a class="active" href="/essays/gauss-bonnet-counts-turning.html">Gauss Bonnet Counts Turning</a></nav>
+  <nav aria-label="series essays"><a  href="/monocurl-essays/essays/curvature-is-turning.html">Curvature Is Turning Per Unit Distance</a><a  href="/monocurl-essays/essays/inversion-turns-lines-into-circles.html">Inversion Turns Lines Into Circles</a><a  href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html">Conformal Maps Keep Tiny Angles</a><a class="active" href="/monocurl-essays/essays/gauss-bonnet-counts-turning.html">Gauss Bonnet Counts Turning</a></nav>
 </section>
     </div>
   </aside>
@@ -100,7 +101,7 @@ $$</div><p>This is true for a circle, but it is not special to circles. A wobbly
 $$</div><p>is curvature concentrated at that vertex.</p><p>A cube has eight vertices, each with defect $\pi/2$, so the total defect is</p><div class="math-display">$$
 8\cdot\frac{\pi}{2}=4\pi.
 $$</div><p>The cube has the same total curvature as a sphere. Not because it is round, but because it has the same topology.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-gauss-bonnet-counts-turning-2-72a628dbfc9b3e7f.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-gauss-bonnet-counts-turning-2-72a628dbfc9b3e7f.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-gauss-bonnet-counts-turning-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -126,7 +127,7 @@ V-E+F=2.
 $$</div><p>If you add up the angular defects over all vertices, the face angles, edge incidences, and vertex counts conspire to produce</p><div class="math-display">$$
 \text{total defect}=2\pi(V-E+F)=4\pi.
 $$</div><p>That is the discrete Gauss-Bonnet theorem for a sphere-like polyhedron. The expression $V-E+F$ is topological. You can bend faces, subdivide edges, or change the shape, but as long as the surface remains sphere-like, the total defect stays $4\pi$.</p><p>Smooth Gauss-Bonnet is what happens when curvature is spread continuously instead of concentrated at vertices.</p><h2 id="local-freedom-global-constraint"><a class="header" href="#local-freedom-global-constraint">Local freedom, global constraint</a></h2><p>A surface can move curvature around. A sphere can be stretched into an ellipsoid. Positive curvature may concentrate near some regions and weaken in others. But the integral of curvature cannot change unless the topology changes.</p><p>This is a profound kind of conservation law. It says local geometry has a global budget.</p><p>The theorem also explains why flat maps of the Earth must distort something. A sphere has total curvature $4\pi$; a flat plane has curvature $0$. You cannot flatten a sphere without tearing, overlapping, or distorting distances and areas. The curvature budget does not fit.</p><p>Gauss-Bonnet is therefore not just a formula. It is a warning: local measurements may be flexible, but their total can remember the shape of the whole world.</p>
-    <nav class="footer-buttons"><a class="footer-button prev" href="/essays/conformal-maps-keep-tiny-angles.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Conformal Maps Keep Tiny Angles</span></a><span class="footer-button-spacer"></span></nav>
+    <nav class="footer-buttons"><a class="footer-button prev" href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Conformal Maps Keep Tiny Angles</span></a><span class="footer-button-spacer"></span></nav>
   </article>
 </div>
 </body>

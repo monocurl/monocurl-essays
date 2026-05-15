@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Curvature Is Turning Per Unit Distance</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Geometry of Curves and Maps</p>
-  <nav aria-label="series essays"><a class="active" href="/essays/curvature-is-turning.html">Curvature Is Turning Per Unit Distance</a><a  href="/essays/inversion-turns-lines-into-circles.html">Inversion Turns Lines Into Circles</a><a  href="/essays/conformal-maps-keep-tiny-angles.html">Conformal Maps Keep Tiny Angles</a><a  href="/essays/gauss-bonnet-counts-turning.html">Gauss Bonnet Counts Turning</a></nav>
+  <nav aria-label="series essays"><a class="active" href="/monocurl-essays/essays/curvature-is-turning.html">Curvature Is Turning Per Unit Distance</a><a  href="/monocurl-essays/essays/inversion-turns-lines-into-circles.html">Inversion Turns Lines Into Circles</a><a  href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html">Conformal Maps Keep Tiny Angles</a><a  href="/monocurl-essays/essays/gauss-bonnet-counts-turning.html">Gauss Bonnet Counts Turning</a></nav>
 </section>
     </div>
   </aside>
@@ -126,7 +127,7 @@ $$</div><p>where $T(t)$ is the unit tangent. The numerator says how fast the dir
 $$</div><p>Notice the denominator. A graph can have the same second derivative at two points, but if one point is steep, then walking a small distance along the curve changes $x$ only a little. The tangent gets more room, measured by arc length, to change direction. The result is lower curvature.</p><h2 id="circles-calibrate-the-scale"><a class="header" href="#circles-calibrate-the-scale">Circles calibrate the scale</a></h2><p>A circle of radius $R$ turns through angle $2\pi$ over arc length $2\pi R$. Its curvature is therefore</p><div class="math-display">$$
 \kappa=\frac{2\pi}{2\pi R}=\frac1R.
 $$</div><p>That is why the osculating circle is such a useful mental model. Large radius means gentle turn. Small radius means sharp turn. A line is the limiting case $R=\infty$, so $\kappa=0$.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-curvature-is-turning-2-b51c898c40ee2809.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-curvature-is-turning-2-b51c898c40ee2809.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-curvature-is-turning-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-float-literal">4.5b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -145,7 +146,7 @@ T(s)=(\cos\theta(s),\sin\theta(s)).
 $$</div><p>Differentiating gives</p><div class="math-display">$$
 T'(s)=\theta'(s)(-\sin\theta(s),\cos\theta(s)).
 $$</div><p>The vector in parentheses has length $1$, so $\lVert T'(s)\rVert=|\theta'(s)|$. In words: the rate at which the tangent vector moves on the unit circle is exactly the rate at which the tangent angle turns.</p><p>Curvature is therefore not an extra decoration placed on a curve. It is the speed of the tangent's own motion.</p>
-    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/essays/inversion-turns-lines-into-circles.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>Inversion Turns Lines Into Circles</span></a></nav>
+    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/monocurl-essays/essays/inversion-turns-lines-into-circles.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>Inversion Turns Lines Into Circles</span></a></nav>
   </article>
 </div>
 </body>

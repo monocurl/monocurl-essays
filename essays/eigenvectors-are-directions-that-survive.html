@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Eigenvectors Are Directions That Survive</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Linear Algebra as Geometry</p>
-  <nav aria-label="series essays"><a class="active" href="/essays/eigenvectors-are-directions-that-survive.html">Eigenvectors Are Directions That Survive</a><a  href="/essays/singular-values-measure-stretch.html">Singular Values Measure Stretch</a></nav>
+  <nav aria-label="series essays"><a class="active" href="/monocurl-essays/essays/eigenvectors-are-directions-that-survive.html">Eigenvectors Are Directions That Survive</a><a  href="/monocurl-essays/essays/singular-values-measure-stretch.html">Singular Values Measure Stretch</a></nav>
 </section>
     </div>
   </aside>
@@ -109,7 +110,7 @@ x=c_1v_1+c_2v_2.
 $$</div><p>Applying the matrix gives</p><div class="math-display">$$
 Ax=c_1\lambda_1v_1+c_2\lambda_2v_2.
 $$</div><p>The matrix no longer feels like a mysterious two-dimensional action. It becomes two independent one-dimensional scalings.</p><p>That is the geometric content of diagonalization. A diagonal matrix is not merely a convenient format. It is a matrix written in coordinates that agree with its natural directions.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-eigenvectors-are-directions-that-survive-2-53891cb4c0392721.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-eigenvectors-are-directions-that-survive-2-53891cb4c0392721.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-eigenvectors-are-directions-that-survive-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -128,7 +129,7 @@ $$</div><p>The matrix no longer feels like a mysterious two-dimensional action. 
 </figure><h2 id="when-there-are-no-real-directions"><a class="header" href="#when-there-are-no-real-directions">When there are no real directions</a></h2><p>Not every matrix has real eigenvectors. A pure rotation by $90^\circ$ turns every nonzero vector. No real direction survives. Algebraically, its eigenvalues are imaginary. Geometrically, that is exactly what you should expect: the plane has no line that a quarter-turn leaves on itself.</p><p>This failure is not a nuisance. It tells you what kind of motion you are looking at. A real eigenvector means the matrix has a real invariant line. Complex eigenvalues mean the action is partly rotational. Repeated powers then produce cycles or spirals rather than simple growth along fixed lines.</p><h2 id="the-real-reason-they-matter"><a class="header" href="#the-real-reason-they-matter">The real reason they matter</a></h2><p>Eigenvectors are not a trick for solving homework problems. They are the stable directions of a transformation. They identify the axes along which a complicated operation becomes multiplication.</p><p>That is why the same idea appears in differential equations, quantum mechanics, graph ranking, Markov chains, vibration modes, and principal components. Each setting has a process that transforms a state. Eigenvectors are the states whose identity survives that transformation.</p><p>The slogan is short, but it is worth taking literally:</p><div class="math-display">$$
 \text{eigenvectors are directions the process understands.}
 $$</div>
-    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/essays/singular-values-measure-stretch.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>Singular Values Measure Stretch</span></a></nav>
+    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/monocurl-essays/essays/singular-values-measure-stretch.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>Singular Values Measure Stretch</span></a></nav>
   </article>
 </div>
 </body>

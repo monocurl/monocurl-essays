@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Taylor Series Are Local Microscopes</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Calculus Without Fog</p>
-  <nav aria-label="series essays"><a class="active" href="/essays/taylor-series-are-local-microscopes.html">Taylor Series Are Local Microscopes</a></nav>
+  <nav aria-label="series essays"><a class="active" href="/monocurl-essays/essays/taylor-series-are-local-microscopes.html">Taylor Series Are Local Microscopes</a></nav>
 </section>
     </div>
   </aside>
@@ -116,7 +117,7 @@ f(x)-p_n(x)
 $$</div><p>has a zero of high order at $x=a$.</p><p>The polynomial is not merely close. It is close in the most locally structured way possible.</p><h2 id="the-danger-of-trusting-too-much"><a class="header" href="#the-danger-of-trusting-too-much">The danger of trusting too much</a></h2><p>Some Taylor series behave globally. The series for $e^x$, $\sin x$, and $\cos x$ converge everywhere. Others have a limited radius of convergence. For example,</p><div class="math-display">$$
 \frac{1}{1-x}=1+x+x^2+x^3+\cdots
 $$</div><p>only converges when $|x|&lt;1$.</p><p>The reason is geometric. The function has a singularity at $x=1$. Even if you are expanding around $0$, that nearby breakdown limits how far the local microscope can see.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-taylor-series-are-local-microscopes-2-6b062c75cd5745b7.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-taylor-series-are-local-microscopes-2-6b062c75cd5745b7.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-taylor-series-are-local-microscopes-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">

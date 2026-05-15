@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Bayes Tilts Belief</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Probability as Geometry</p>
-  <nav aria-label="series essays"><a  href="/essays/random-walks-become-bells.html">Random Walks Become Bells</a><a class="active" href="/essays/bayes-tilts-belief.html">Bayes Tilts Belief</a></nav>
+  <nav aria-label="series essays"><a  href="/monocurl-essays/essays/random-walks-become-bells.html">Random Walks Become Bells</a><a class="active" href="/monocurl-essays/essays/bayes-tilts-belief.html">Bayes Tilts Belief</a></nav>
 </section>
     </div>
   </aside>
@@ -122,7 +123,7 @@ $$</div><p>Taking logs turns this into addition:</p><div class="math-display">$$
 +
 \log \text{likelihood ratio}.
 $$</div><p>Each piece of evidence adds a signed amount to the balance. Strong evidence is a large push. Weak evidence is a small nudge. Contradictory evidence pushes the other way.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-bayes-tilts-belief-2-5732aa59a597fac0.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-bayes-tilts-belief-2-5732aa59a597fac0.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-bayes-tilts-belief-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -140,7 +141,7 @@ $$</div><p>Each piece of evidence adds a signed amount to the balance. Strong ev
 </span><span class="mc-token mc-non-control-flow-keyword mc-token-slide">slide</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-text-literal mc-token-string-literal">&quot;log odds add&quot;</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-whitespace">    </span><span class="mc-token mc-control-flow mc-token-play">play</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Fade</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-float-literal">0.6</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span></code></pre></div></details>
 </figure><h2 id="the-shape-of-learning"><a class="header" href="#the-shape-of-learning">The shape of learning</a></h2><p>Bayesian reasoning is not about blindly trusting priors, and it is not about blindly trusting data. It is about having a rule for how evidence changes a state of uncertainty.</p><p>A strong prior can resist weak evidence. Repeated evidence can overwhelm a strong prior. Precise measurements make narrow likelihoods. Noisy measurements make broad likelihoods. All of these cases are the same geometric operation: multiply the prior shape by the likelihood shape and renormalize.</p><p>Bayes' rule becomes much less mysterious when you stop treating it as a fraction and start treating it as a motion of probability mass.</p>
-    <nav class="footer-buttons"><a class="footer-button prev" href="/essays/random-walks-become-bells.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Random Walks Become Bells</span></a><span class="footer-button-spacer"></span></nav>
+    <nav class="footer-buttons"><a class="footer-button prev" href="/monocurl-essays/essays/random-walks-become-bells.html"><span class="footer-icon icon-prev-slide" aria-hidden="true"></span><span>Random Walks Become Bells</span></a><span class="footer-button-spacer"></span></nav>
   </article>
 </div>
 </body>

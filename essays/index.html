@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Essays - Monocurl Essays</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -46,42 +47,42 @@
     <h2>Geometry of Curves and Maps</h2>
     <p>How local measurements and transformations turn curves, circles, and lines into usable mental models.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/curvature-is-turning.html"><strong>Curvature Is Turning Per Unit Distance</strong><small>A curve is not just a path through points. It carries a hidden clock that measures how quickly its tangent direction turns.</small></a></li><li><a href="/essays/inversion-turns-lines-into-circles.html"><strong>Inversion Turns Lines Into Circles</strong><small>The map z -&gt; 1/z looks strange until you watch a straight line become a circle tangent to the origin.</small></a></li><li><a href="/essays/conformal-maps-keep-tiny-angles.html"><strong>Conformal Maps Keep Tiny Angles</strong><small>Complex functions can twist and stretch the plane while preserving the angle between infinitesimal curves.</small></a></li><li><a href="/essays/gauss-bonnet-counts-turning.html"><strong>Gauss Bonnet Counts Turning</strong><small>The total curvature of a surface is tied to topology because local turning has a global accounting rule.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/curvature-is-turning.html"><strong>Curvature Is Turning Per Unit Distance</strong><small>A curve is not just a path through points. It carries a hidden clock that measures how quickly its tangent direction turns.</small></a></li><li><a href="/monocurl-essays/essays/inversion-turns-lines-into-circles.html"><strong>Inversion Turns Lines Into Circles</strong><small>The map z -&gt; 1/z looks strange until you watch a straight line become a circle tangent to the origin.</small></a></li><li><a href="/monocurl-essays/essays/conformal-maps-keep-tiny-angles.html"><strong>Conformal Maps Keep Tiny Angles</strong><small>Complex functions can twist and stretch the plane while preserving the angle between infinitesimal curves.</small></a></li><li><a href="/monocurl-essays/essays/gauss-bonnet-counts-turning.html"><strong>Gauss Bonnet Counts Turning</strong><small>The total curvature of a surface is tied to topology because local turning has a global accounting rule.</small></a></li></ol>
 </section><section class="series-card" id="dynamics-of-smoothing">
   <header>
     <p class="eyebrow">series</p>
     <h2>Dynamics of Smoothing</h2>
     <p>Equations that turn local rules into global behavior, from diffusion to frequency filtering.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/heat-equation-sorts-waves.html"><strong>The Heat Equation Sorts Waves By Size</strong><small>Heat flow looks like blur, but underneath it is a precise frequency filter that erases small wiggles first.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/heat-equation-sorts-waves.html"><strong>The Heat Equation Sorts Waves By Size</strong><small>Heat flow looks like blur, but underneath it is a precise frequency filter that erases small wiggles first.</small></a></li></ol>
 </section><section class="series-card" id="linear-algebra-as-geometry">
   <header>
     <p class="eyebrow">series</p>
     <h2>Linear Algebra as Geometry</h2>
     <p>Matrices are not tables of numbers. They are geometric machines whose hidden structure becomes visible when you watch what they do to space.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/eigenvectors-are-directions-that-survive.html"><strong>Eigenvectors Are Directions That Survive</strong><small>A matrix can shear, rotate, and stretch the plane, but a few special directions pass through unchanged except for scale.</small></a></li><li><a href="/essays/singular-values-measure-stretch.html"><strong>Singular Values Measure Stretch</strong><small>Every linear transformation sends the unit circle to an ellipse, and the axes of that ellipse reveal its cleanest possible geometry.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/eigenvectors-are-directions-that-survive.html"><strong>Eigenvectors Are Directions That Survive</strong><small>A matrix can shear, rotate, and stretch the plane, but a few special directions pass through unchanged except for scale.</small></a></li><li><a href="/monocurl-essays/essays/singular-values-measure-stretch.html"><strong>Singular Values Measure Stretch</strong><small>Every linear transformation sends the unit circle to an ellipse, and the axes of that ellipse reveal its cleanest possible geometry.</small></a></li></ol>
 </section><section class="series-card" id="signals-and-spectra">
   <header>
     <p class="eyebrow">series</p>
     <h2>Signals and Spectra</h2>
     <p>Waves, filters, and transforms turn complicated shapes into collections of simpler vibrations.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/fourier-series-listen-to-shapes.html"><strong>Fourier Series Listen To Shapes</strong><small>A jagged function can be understood as a chord of pure waves, each carrying a frequency and an amplitude.</small></a></li><li><a href="/essays/laplace-transform-turns-memory-into-algebra.html"><strong>The Laplace Transform Turns Memory Into Algebra</strong><small>Exponential weights convert differential equations into algebra by asking how a system responds at every decay rate.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/fourier-series-listen-to-shapes.html"><strong>Fourier Series Listen To Shapes</strong><small>A jagged function can be understood as a chord of pure waves, each carrying a frequency and an amplitude.</small></a></li><li><a href="/monocurl-essays/essays/laplace-transform-turns-memory-into-algebra.html"><strong>The Laplace Transform Turns Memory Into Algebra</strong><small>Exponential weights convert differential equations into algebra by asking how a system responds at every decay rate.</small></a></li></ol>
 </section><section class="series-card" id="calculus-without-fog">
   <header>
     <p class="eyebrow">series</p>
     <h2>Calculus Without Fog</h2>
     <p>Derivatives, series, and integrals become clearer when treated as local geometry rather than symbolic rituals.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/taylor-series-are-local-microscopes.html"><strong>Taylor Series Are Local Microscopes</strong><small>A Taylor polynomial records what a function looks like under stronger and stronger magnification near a point.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/taylor-series-are-local-microscopes.html"><strong>Taylor Series Are Local Microscopes</strong><small>A Taylor polynomial records what a function looks like under stronger and stronger magnification near a point.</small></a></li></ol>
 </section><section class="series-card" id="probability-as-geometry">
   <header>
     <p class="eyebrow">series</p>
     <h2>Probability as Geometry</h2>
     <p>Probability distributions are shapes that move, concentrate, and smooth under repeated operations.</p>
   </header>
-  <ol class="series-essay-list"><li><a href="/essays/random-walks-become-bells.html"><strong>Random Walks Become Bells</strong><small>Repeated tiny independent steps produce a bell curve because convolution smooths and spreads probability in a rigid way.</small></a></li><li><a href="/essays/bayes-tilts-belief.html"><strong>Bayes Tilts Belief</strong><small>Bayes' rule is not a magic formula. It is a geometric reweighting of a prior shape by the evidence it predicts.</small></a></li></ol>
+  <ol class="series-essay-list"><li><a href="/monocurl-essays/essays/random-walks-become-bells.html"><strong>Random Walks Become Bells</strong><small>Repeated tiny independent steps produce a bell curve because convolution smooths and spreads probability in a rigid way.</small></a></li><li><a href="/monocurl-essays/essays/bayes-tilts-belief.html"><strong>Bayes Tilts Belief</strong><small>Bayes' rule is not a magic formula. It is a geometric reweighting of a prior shape by the evidence it predicts.</small></a></li></ol>
 </section></div>
 </main>
 </body>

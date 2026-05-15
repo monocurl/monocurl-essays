@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive mathematical essays built with Monocurl.">
   <title>Fourier Series Listen To Shapes</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/monocurl-32.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="/img/monocurl-256.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/monocurl-essays/img/monocurl-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="/monocurl-essays/img/monocurl-256.png">
+  <link rel="icon" href="/monocurl-essays/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/monocurl-essays/css/learning.css">
   <script>
+    window.MONOCURL_ESSAYS_BASE_PATH = "/monocurl-essays/";
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
@@ -20,14 +21,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script type="module" src="/js/learning-site.js"></script>
+  <script type="module" src="/monocurl-essays/js/learning-site.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/"><img src="/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
+    <a class="brand" href="/monocurl-essays/"><img src="/monocurl-essays/img/monocurl-1024.png" alt=""><span>Monocurl Essays</span></a>
     <nav class="top-links" aria-label="primary">
-      <a  href="/">Home</a>
-      <a class="active" href="/essays/">Essays</a>
+      <a  href="/monocurl-essays/">Home</a>
+      <a class="active" href="/monocurl-essays/essays/">Essays</a>
     </nav>
     <div class="top-actions">
       <a href="https://www.monocurl.com">Main site</a>
@@ -41,7 +42,7 @@
       <p class="essay-date">2026-05-14</p>
       <section class="series-context">
   <p class="eyebrow">Signals and Spectra</p>
-  <nav aria-label="series essays"><a class="active" href="/essays/fourier-series-listen-to-shapes.html">Fourier Series Listen To Shapes</a><a  href="/essays/laplace-transform-turns-memory-into-algebra.html">The Laplace Transform Turns Memory Into Algebra</a></nav>
+  <nav aria-label="series essays"><a class="active" href="/monocurl-essays/essays/fourier-series-listen-to-shapes.html">Fourier Series Listen To Shapes</a><a  href="/monocurl-essays/essays/laplace-transform-turns-memory-into-algebra.html">The Laplace Transform Turns Memory Into Algebra</a></nav>
 </section>
     </div>
   </aside>
@@ -106,7 +107,7 @@ $$</div><p>Each new wave has a smaller amplitude but a higher frequency. The hig
 $$</div><p>Orthogonality means that one frequency does not impersonate another. If you want to know how much of $\sin(7x)$ is inside a function, you multiply by $\sin(7x)$ and average over a period. All the other sine waves disappear from that measurement.</p><p>For a function $f(x)$, the sine coefficient is</p><div class="math-display">$$
 b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin(nx)\,dx.
 $$</div><p>That integral is a dot product in disguise. Fourier analysis is linear algebra with functions as vectors.</p><h2 id="the-ear-already-knows-this"><a class="header" href="#the-ear-already-knows-this">The ear already knows this</a></h2><p>Sound gives the most intuitive version. A violin note and a flute note can have the same fundamental pitch, but they sound different because the higher harmonics have different strengths. Your ear does not hear the raw pressure wave as one indivisible object. It decomposes it into frequencies.</p><p>Fourier series says the same idea works for any periodic signal. A shape has a spectrum. The graph is what you see in position space; the coefficients are what you hear in frequency space.</p><figure class="scene-block">
-  <div class="scene-grid"><div class="scene-media"><img src="/media/generated/essay-2026-fourier-series-listen-to-shapes-2-ac8f38d6e5151d4e.png" alt="rendered Monocurl scene"></div></div>
+  <div class="scene-grid"><div class="scene-media"><img src="/monocurl-essays/media/generated/essay-2026-fourier-series-listen-to-shapes-2-ac8f38d6e5151d4e.png" alt="rendered Monocurl scene"></div></div>
   <details class="source-disclosure figure-chin"><summary><span class="figure-kind">image</span><span class="figure-file">essay-2026-fourier-series-listen-to-shapes-2.mcs</span></summary><div class="code-shell" data-language="mcs"><button class="code-copy" type="button" data-copy-code>Copy</button><pre><code><span class="mc-token mc-identifier mc-token-identifier">background</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier">BLACK</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-identifier mc-token-identifier">camera</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-operator mc-token-assign">=</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Camera</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-integer-literal">4b</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-newline">
@@ -124,7 +125,7 @@ $$</div><p>That integral is a dot product in disguise. Fourier analysis is linea
 </span><span class="mc-token mc-non-control-flow-keyword mc-token-slide">slide</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-text-literal mc-token-string-literal">&quot;spectrum&quot;</span><span class="mc-token mc-whitespace mc-token-newline">
 </span><span class="mc-token mc-whitespace mc-token-whitespace">    </span><span class="mc-token mc-control-flow mc-token-play">play</span><span class="mc-token mc-whitespace mc-token-whitespace"> </span><span class="mc-token mc-identifier mc-token-identifier mc-function-invocation">Fade</span><span class="mc-token mc-punctuation mc-token-l-paren">(</span><span class="mc-token mc-numeric-literal mc-token-float-literal">0.6</span><span class="mc-token mc-punctuation mc-token-r-paren">)</span></code></pre></div></details>
 </figure><h2 id="corners-cost-high-frequencies"><a class="header" href="#corners-cost-high-frequencies">Corners cost high frequencies</a></h2><p>Smoothness and frequency content are linked. A very smooth function has Fourier coefficients that decay quickly. A function with a corner needs more high-frequency content. A function with a jump needs even more.</p><p>This explains why compression works. If an image or sound has lots of smooth structure, many high-frequency coefficients are small. You can throw away the tiny ones and keep the perceptually important part. But sharp edges, clicks, and sudden transitions are expensive. They demand high frequencies.</p><p>It also explains a subtle visual feature near jumps: the partial sums overshoot. Even with many terms, the Fourier approximation has a little ripple near a discontinuity. This is the Gibbs phenomenon. The overshoot does not vanish in height, but it gets squeezed into a narrower region.</p><h2 id="a-new-coordinate-system"><a class="header" href="#a-new-coordinate-system">A new coordinate system</a></h2><p>The deepest lesson is not that sine waves are useful. It is that the same object can become simpler when expressed in the right coordinates.</p><p>In position space, a square wave is a simple instruction with a sharp jump. In frequency space, it is an infinite list of odd harmonics. In the heat equation, position space says neighboring points average with one another. Frequency space says each sine wave decays independently.</p><p>Fourier analysis is the bridge between those descriptions. It turns geometry into sound and differential equations into multiplication. Once you learn to hear a shape, many hard problems become questions about which frequencies are present and how strongly they speak.</p>
-    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/essays/laplace-transform-turns-memory-into-algebra.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>The Laplace Transform Turns Memory Into Algebra</span></a></nav>
+    <nav class="footer-buttons"><span class="footer-button-spacer"></span><a class="footer-button next" href="/monocurl-essays/essays/laplace-transform-turns-memory-into-algebra.html"><span class="footer-icon icon-next-slide" aria-hidden="true"></span><span>The Laplace Transform Turns Memory Into Algebra</span></a></nav>
   </article>
 </div>
 </body>
