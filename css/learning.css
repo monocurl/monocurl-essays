@@ -826,6 +826,15 @@ code {
   margin: 1.2rem 0;
   overflow-x: auto;
   color: var(--fg);
+  text-align: center;
+}
+
+.math-display mjx-container[jax="SVG"] {
+  margin-inline: auto;
+}
+
+mjx-container[jax="SVG"] {
+  color: var(--fg);
 }
 
 .scene-block,
