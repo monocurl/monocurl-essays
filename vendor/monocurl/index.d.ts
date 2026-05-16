@@ -1,13 +1,9 @@
-import type { MonocurlMathJax } from "./mathjax-renderer.js";
-export type PlaybackMode = "preview" | "presentation";
 export type Vec2 = [number, number];
 export type Vec3 = [number, number, number];
 export type Vec4 = [number, number, number, number];
 export type ExecutionStatus = "playing" | "paused" | "runtimeError" | "compileError";
-export { MonocurlWebGlRenderer, UnsupportedWebGlRendererError, createMonocurlWebGlRenderer, } from "./webgl-renderer.js";
-export type { MonocurlWebGlRendererOptions } from "./webgl-renderer.js";
-export { MissingMathJaxError, installMonocurlMathJaxRenderer, renderMathJaxSvg, } from "./mathjax-renderer.js";
-export type { MonocurlLatexSvgRenderer, MonocurlMathJax, MonocurlMathJaxRendererOptions, } from "./mathjax-renderer.js";
+export { MonocurlCameraController, MonocurlWebGlRenderer, UnsupportedWebGlRendererError, createMonocurlWebGlRenderer, installMonocurlCameraController, } from "./webgl-renderer.js";
+export type { MonocurlCameraControllerOptions, MonocurlSnapshotSource, MonocurlWebGlRenderOptions, MonocurlWebGlRendererOptions, } from "./webgl-renderer.js";
 export interface Timestamp {
     slide: number;
     time: number;
@@ -22,6 +18,10 @@ export interface RuntimeStepResult extends RuntimeIteration {
     isPlaying: boolean;
     needsWork: boolean;
 }
+export type MonocurlSnapshotListener = (snapshot: ExecutionSnapshot, result: RuntimeStepResult) => void;
+export type MonocurlStepListener = (result: RuntimeStepResult) => void;
+export type MonocurlIdleListener = (result: RuntimeStepResult) => void;
+export type MonocurlErrorListener = (error: unknown) => void;
 export interface PlayOptions {
     until?: Timestamp;
 }
@@ -236,8 +236,7 @@ export interface MonocurlWasmRuntimeHandle {
     is_playing(): boolean;
     seek_to(slide: number, time: number): void;
     toggle_play(nowSeconds: number): void;
-    set_presentation_mode(): void;
-    set_preview_mode(): void;
+    set_web_mode(): void;
     update_parameters?(updatesJson: string, nowSeconds: number): void;
     step(nowSeconds: number): Promise<number>;
     step_json?(nowSeconds: number): Promise<string>;
@@ -248,8 +247,6 @@ export interface MonocurlWasmRuntimeHandle {
 export interface MonocurlWasmModule {
     Runtime: new () => MonocurlWasmRuntimeHandle;
 }
-export type MonocurlWasmSource = MonocurlWasmModule | Promise<MonocurlWasmModule> | (() => MonocurlWasmModule | Promise<MonocurlWasmModule>);
-export type MonocurlWasmInitInput = unknown;
 export interface RuntimeClock {
     nowSeconds(): number;
 }
@@ -258,29 +255,12 @@ export interface FrameScheduler {
     cancel(handle: number): void;
 }
 export interface CreateMonocurlLoopOptions {
-    /**
-     * Optional override for tests or custom bundlers. By default the packaged
-     * Monocurl wasm runtime is initialized and used automatically.
-     */
-    wasm?: MonocurlWasmSource;
-    /**
-     * Optional input passed to wasm-bindgen initialization. Leave unset to fetch
-     * the packaged `web_runtime_bg.wasm` next to this package's wasm JS glue.
-     */
-    wasmInit?: MonocurlWasmInitInput;
-    runtime?: MonocurlWasmRuntimeHandle;
-    /**
-     * MathJax instance to install for Text/Tex rendering. By default, an existing
-     * global `MathJax` is installed automatically when available. Pass `false` to
-     * opt out.
-     */
-    mathJax?: MonocurlMathJax | false;
-    mathJaxDisplay?: boolean;
     clock?: RuntimeClock;
     scheduler?: FrameScheduler;
-    onStep?: (result: RuntimeStepResult) => void;
-    onIdle?: (result: RuntimeStepResult) => void;
-    onError?: (error: unknown) => void;
+    onSnapshot?: MonocurlSnapshotListener;
+    onStep?: MonocurlStepListener;
+    onIdle?: MonocurlIdleListener;
+    onError?: MonocurlErrorListener;
 }
 export declare class UnsupportedWasmMethodError extends Error {
     constructor(method: string);
@@ -292,23 +272,30 @@ export declare function parseCompilationReport(json: string): CompilationReport;
 export declare const performanceClock: RuntimeClock;
 export declare const animationFrameScheduler: FrameScheduler;
 export declare function createMonocurlLoop(options?: CreateMonocurlLoopOptions): Promise<MonocurlLoop>;
-type MonocurlLoopOptions = Omit<CreateMonocurlLoopOptions, "wasm" | "wasmInit" | "runtime" | "mathJax" | "mathJaxDisplay">;
+type MonocurlLoopOptions = CreateMonocurlLoopOptions;
+declare const loopConstructorToken: unique symbol;
+type LoopConstructorToken = typeof loopConstructorToken;
 export declare class MonocurlLoop {
-    readonly runtime: MonocurlWasmRuntimeHandle;
+    private readonly runtime;
     private readonly clock;
     private readonly scheduler;
-    private readonly onStep?;
-    private readonly onIdle?;
-    private readonly onError?;
+    private readonly snapshotListeners;
+    private readonly stepListeners;
+    private readonly idleListeners;
+    private readonly errorListeners;
     private scheduledFrame;
     private pendingStep;
+    private needsNextFrame;
     private playUntil;
     private disposed;
-    constructor(runtime: MonocurlWasmRuntimeHandle, options?: MonocurlLoopOptions);
+    constructor(runtime: MonocurlWasmRuntimeHandle, token: LoopConstructorToken, options?: MonocurlLoopOptions);
     get isPlaying(): boolean;
     get needsWork(): boolean;
+    addSnapshotListener(listener: MonocurlSnapshotListener): () => void;
+    addStepListener(listener: MonocurlStepListener): () => void;
+    addIdleListener(listener: MonocurlIdleListener): () => void;
+    addErrorListener(listener: MonocurlErrorListener): () => void;
     loadSource(source: string, imports?: Record<string, string>, rootPath?: string): CompilationReport;
-    setPlaybackMode(mode: PlaybackMode): void;
     seekTo(timestamp: Timestamp): void;
     updateParameter(target: PresentationUpdateTarget, value: ParameterValue, nowSeconds?: number): void;
     updateParameters(updates: ParameterUpdate[], nowSeconds?: number): void;
@@ -320,6 +307,9 @@ export declare class MonocurlLoop {
     private stop;
     dispose(): void;
     private runStep;
+    private emitStep;
+    private emitIdle;
+    private emitError;
     private applyPlayUntil;
     private assertLive;
 }

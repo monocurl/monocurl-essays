@@ -12,6 +12,7 @@ export class Runtime {
     seek_to(slide: number, time: number): void;
     set_presentation_mode(): void;
     set_preview_mode(): void;
+    set_web_mode(): void;
     step(now_seconds: number): Promise<number>;
     step_json(now_seconds: number): Promise<string>;
     toggle_play(now_seconds: number): void;
@@ -31,17 +32,18 @@ export interface InitOutput {
     readonly runtime_seek_to: (a: number, b: number, c: number) => void;
     readonly runtime_set_presentation_mode: (a: number) => void;
     readonly runtime_set_preview_mode: (a: number) => void;
+    readonly runtime_set_web_mode: (a: number) => void;
     readonly runtime_step: (a: number, b: number) => any;
     readonly runtime_step_json: (a: number, b: number) => any;
     readonly runtime_toggle_play: (a: number, b: number) => void;
     readonly runtime_update_parameters: (a: number, b: number, c: number, d: number) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h13013c3aab61c762: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h1f06b91b2aba56bf: (a: number, b: number, c: any, d: any) => void;
-    readonly __wbindgen_malloc_command_export: (a: number, b: number) => number;
-    readonly __wbindgen_realloc_command_export: (a: number, b: number, c: number, d: number) => number;
     readonly __wbindgen_exn_store_command_export: (a: number) => void;
     readonly __externref_table_alloc_command_export: () => number;
     readonly __wbindgen_externrefs: WebAssembly.Table;
+    readonly __wbindgen_malloc_command_export: (a: number, b: number) => number;
+    readonly __wbindgen_realloc_command_export: (a: number, b: number, c: number, d: number) => number;
     readonly __wbindgen_destroy_closure_command_export: (a: number, b: number) => void;
     readonly __externref_table_dealloc_command_export: (a: number) => void;
     readonly __wbindgen_free_command_export: (a: number, b: number, c: number) => void;

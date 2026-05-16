@@ -1,5 +1,9 @@
-const SITE_BASE = normalizeSiteBase(globalThis.MONOCURL_ESSAYS_BASE_PATH || "/");
-const monocurlRuntime = import(`${SITE_BASE}vendor/monocurl/index.js`);
+let monocurlRuntime;
+
+function loadMonocurlRuntime() {
+  monocurlRuntime ??= import(new URL("../vendor/monocurl/index.js", import.meta.url).href);
+  return monocurlRuntime;
+}
 
 document.addEventListener("click", async (event) => {
   const button = event.target.closest("[data-copy-code]");
@@ -23,13 +27,59 @@ document.addEventListener("click", async (event) => {
 });
 
 for (const block of document.querySelectorAll("[data-mcl-slideshow]")) {
-  void mountSlideshow(block).catch((error) => {
-    const status = block.querySelector("[data-mcl-status]");
-    if (status) {
-      status.textContent = error instanceof Error ? error.message : String(error);
-      status.classList.add("error");
+  prepareLazySlideshow(block);
+}
+
+function prepareLazySlideshow(block) {
+  setSlideshowControlsDisabled(block, true);
+
+  let observer;
+  let mountPromise;
+  const mountOnce = () => {
+    observer?.disconnect();
+    if (mountPromise) return mountPromise;
+
+    block.setAttribute("data-mcl-load-state", "loading");
+    mountPromise = mountSlideshow(block)
+      .then(() => {
+        block.setAttribute("data-mcl-load-state", "ready");
+        setSlideshowControlsDisabled(block, false);
+      })
+      .catch((error) => {
+        block.setAttribute("data-mcl-load-state", "error");
+        setSlideshowControlsDisabled(block, true);
+        reportRuntimeError(block.querySelector("[data-mcl-status]"), error);
+      });
+    return mountPromise;
+  };
+
+  block.addEventListener("focusin", () => void mountOnce(), { once: true });
+  block.addEventListener("pointerenter", () => void mountOnce(), { once: true });
+
+  if (!("IntersectionObserver" in window)) {
+    void mountOnce();
+    return;
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        void mountOnce();
+      }
+    },
+    { threshold: 0 },
+  );
+  observer.observe(block);
+}
+
+function setSlideshowControlsDisabled(block, disabled) {
+  for (const control of block.querySelectorAll(
+    "[data-mcl-prev], [data-mcl-play], [data-mcl-next], [data-mcl-current-slide]",
+  )) {
+    if (control instanceof HTMLButtonElement) {
+      control.disabled = disabled;
     }
-  });
+  }
 }
 
 async function mountSlideshow(block) {
@@ -50,9 +100,12 @@ async function mountSlideshow(block) {
     throw new Error("missing slideshow mount point");
   }
 
-  const { MonocurlWebGlRenderer, createMonocurlLoop } = await monocurlRuntime;
+  const {
+    MonocurlWebGlRenderer,
+    createMonocurlLoop,
+    installMonocurlCameraController,
+  } = await loadMonocurlRuntime();
   const source = JSON.parse(sourceNode.textContent || "\"\"");
-  const renderer = new MonocurlWebGlRenderer(canvas);
   const allow = new Set(
     (block.getAttribute("data-allow") || "")
       .split(",")
@@ -65,68 +118,49 @@ async function mountSlideshow(block) {
   let reportSlides = [];
   let renderedParamKeys = "";
   let activeSlide = 0;
-  let displaySlideOverride = 0;
-  let playbackPump = undefined;
+  const controlCache = new Map();
 
-  await globalThis.MathJax?.startup?.promise;
-
-  const loop = await createMonocurlLoop({
-    onStep(result) {
-      for (const snapshot of result.snapshots) {
-        latestSnapshot = snapshot;
-        renderer.render(snapshot);
-      }
-      if (latestSnapshot) {
-        const displayTimestamp = resolveDisplayTimestamp(
-          latestSnapshot,
-          reportSlides,
-          displaySlideOverride,
-        );
-        displaySlideOverride = displayTimestamp.override;
-        activeSlide = displayTimestamp.slide;
-        updateRuntimeStatus(status, latestSnapshot);
-        updateTimeLabel(timeLabel, displayTimestamp);
-        updateSlidePicker(slideHost, currentSlideButton, reportSlides, activeSlide);
-        updateParameterPanel(
-          block,
-          paramPanel,
-          paramHost,
-          loop,
-          latestSnapshot,
-          allow,
-          ranges,
-          renderedParamKeys,
-          (keys) => {
-            renderedParamKeys = keys;
-          },
-        );
-      }
-      if (playButton) {
-        playButton.classList.toggle("is-playing", result.isPlaying);
-        playButton.setAttribute("aria-label", result.isPlaying ? "pause" : "play");
-      }
-    },
-    onError(error) {
-      reportRuntimeError(status, error);
-    },
+  const loop = await createMonocurlLoop();
+  if (block.hasAttribute("data-mcl-slideshow3d")) {
+    installMonocurlCameraController(canvas, loop);
+  } else {
+    const renderer = new MonocurlWebGlRenderer(canvas);
+    observeCanvasResize(canvas, renderer, () => latestSnapshot);
+    loop.addSnapshotListener((snapshot) => {
+      renderer.render(snapshot);
+    });
+  }
+  loop.addSnapshotListener((snapshot) => {
+    latestSnapshot = snapshot;
+    const displayTimestamp = resolveDisplayTimestamp(snapshot);
+    activeSlide = displayTimestamp.slide;
+    updateRuntimeStatus(status, snapshot);
+    updateTimeLabel(timeLabel, displayTimestamp);
+    updateSlidePicker(slideHost, currentSlideButton, reportSlides, activeSlide);
+    updateParameterPanel(
+      block,
+      paramPanel,
+      paramHost,
+      loop,
+      snapshot,
+      allow,
+      ranges,
+      controlCache,
+      renderedParamKeys,
+      (keys) => {
+        renderedParamKeys = keys;
+      },
+    );
   });
-
-  const schedulePlaybackPump = () => {
-    if (playbackPump !== undefined) return;
-    const tick = async () => {
-      playbackPump = undefined;
-      try {
-        await loop.step();
-      } catch (error) {
-        reportRuntimeError(status, error);
-        return;
-      }
-      if (loop.isPlaying || loop.needsWork) {
-        playbackPump = window.setTimeout(tick, 16);
-      }
-    };
-    playbackPump = window.setTimeout(tick, 16);
-  };
+  loop.addStepListener((result) => {
+    if (playButton) {
+      playButton.classList.toggle("is-playing", result.isPlaying);
+      playButton.setAttribute("aria-label", result.isPlaying ? "pause" : "play");
+    }
+  });
+  loop.addErrorListener((error) => {
+    reportRuntimeError(status, error);
+  });
 
   const report = loop.loadSource(source);
   reportSlides = normalizeSlides(report.slides ?? []);
@@ -138,54 +172,35 @@ async function mountSlideshow(block) {
   const selectSlide = (slide) => {
     if (!slide) return;
     activeSlide = slide.index;
-    displaySlideOverride = slide.index;
     updateSlidePicker(slideHost, currentSlideButton, reportSlides, activeSlide);
   };
 
-  loop.setPlaybackMode("presentation");
   renderSlides(slideHost, reportSlides, loop, currentSlideButton, selectSlide);
-  activeSlide = reportSlides[0]?.index ?? 0;
-  displaySlideOverride = activeSlide;
-  seekToSlideStart(loop, reportSlides, reportSlides[0]);
+  activeSlide = 0;
+  seekToSceneStart(loop);
   updateSlidePicker(slideHost, currentSlideButton, reportSlides, activeSlide);
   await loop.step();
 
   playButton?.addEventListener("click", () => {
-    if (loop.isPlaying) {
-      loop.pause();
-    } else {
-      const runtimeTimestamp = latestSnapshot?.currentTimestamp;
-      let targetSlide = slideByIndex(reportSlides, activeSlide);
-      if (
-        runtimeTimestamp?.time === null &&
-        !boundaryBeforeSlide(reportSlides, runtimeTimestamp, targetSlide)
-      ) {
-        seekToSlideStart(loop, reportSlides, targetSlide);
+    void runRuntimeCommand(loop, () => {
+      if (!loop.isPlaying && isAtSceneEnd(latestSnapshot, reportSlides.length)) {
+        seekToSceneStart(loop);
       }
-      if (targetSlide) {
-        displaySlideOverride = targetSlide.index;
-        loop.play({
-          until: {
-            slide: targetSlide.runtimeIndex ?? targetSlide.index,
-            time: Number.POSITIVE_INFINITY,
-          },
-        });
-      }
-    }
-    schedulePlaybackPump();
+      loop.togglePlay();
+    });
   });
   previousButton?.addEventListener("click", () => {
     void runRuntimeCommand(loop, () => {
-      const slide = adjacentSlide(reportSlides, activeSlide, -1);
-      selectSlide(slide);
-      seekToSlideStart(loop, reportSlides, slide);
+      loop.pause();
+      const target = previousSlideTarget(latestSnapshot, reportSlides.length);
+      loop.seekTo(target);
     });
   });
   nextButton?.addEventListener("click", () => {
     void runRuntimeCommand(loop, () => {
-      const slide = adjacentSlide(reportSlides, activeSlide, 1);
-      selectSlide(slide);
-      seekToSlideStart(loop, reportSlides, slide);
+      loop.pause();
+      const target = nextSlideTarget(latestSnapshot, reportSlides.length);
+      loop.seekTo(target);
     });
   });
   currentSlideButton?.addEventListener("click", () => {
@@ -206,15 +221,38 @@ function reportRuntimeError(status, error) {
   status.classList.add("error");
 }
 
-function normalizeSiteBase(value) {
-  const source = String(value || "/").trim();
-  if (!source || source === "/") return "/";
-  return `/${source.replace(/^\/+|\/+$/g, "")}/`;
+function observeCanvasResize(canvas, renderer, getSnapshot) {
+  if (!("ResizeObserver" in window)) return;
+
+  const redraw = () => {
+    const snapshot = getSnapshot();
+    if (snapshot) {
+      renderer.render(snapshot);
+    }
+  };
+
+  const observer = new ResizeObserver(redraw);
+  observer.observe(canvas);
 }
 
 function renderSlides(host, slides, loop, currentSlideButton, selectSlide) {
   if (!host) return;
   host.textContent = "";
+
+  const sceneStartButton = document.createElement("button");
+  sceneStartButton.type = "button";
+  sceneStartButton.dataset.slideIndex = "0";
+  sceneStartButton.role = "option";
+  sceneStartButton.textContent = "initial";
+  sceneStartButton.addEventListener("click", () => {
+    void runRuntimeCommand(loop, () => {
+      loop.pause();
+      selectSlide?.({ index: 0 });
+      seekToSceneStart(loop);
+    });
+    setSlideMenuOpen(host, currentSlideButton, false);
+  });
+  host.append(sceneStartButton);
 
   for (const slide of slides) {
     const button = document.createElement("button");
@@ -224,8 +262,9 @@ function renderSlides(host, slides, loop, currentSlideButton, selectSlide) {
     button.textContent = slide.name || `slide ${slide.index}`;
     button.addEventListener("click", () => {
       void runRuntimeCommand(loop, () => {
+        loop.pause();
         selectSlide?.(slide);
-        seekToSlideStart(loop, slides, slide);
+        seekToSlideEnd(loop, slide);
       });
       setSlideMenuOpen(host, currentSlideButton, false);
     });
@@ -244,28 +283,44 @@ function normalizeSlides(slides) {
   });
 }
 
-function seekToSlideStart(loop, slides, slide) {
+function seekToSceneStart(loop) {
+  loop.seekTo({ slide: 0, time: Infinity });
+}
+
+function seekToSlideEnd(loop, slide) {
   if (!slide) return;
-  const previous = previousSlide(slides, slide);
-  const boundarySlide = previous?.runtimeIndex ?? Math.max(0, slide.index - 1);
-  loop.seekTo({ slide: boundarySlide, time: Number.POSITIVE_INFINITY });
+  loop.seekTo({ slide: slide.runtimeIndex ?? slide.index, time: Infinity });
 }
 
-function slideByIndex(slides, index) {
-  return slides.find((slide) => slide.index === index);
+function previousSlideTarget(snapshot, slideCount) {
+  if (slideCount === 0) return { slide: 0, time: Infinity };
+  const timestamp = runtimeTimestamp(snapshot);
+  const slide = Math.min(timestamp.slide, slideCount);
+  return { slide: Math.max(0, slide - 1), time: Infinity };
 }
 
-function adjacentSlide(slides, current, delta) {
-  if (slides.length === 0) return undefined;
-  const currentPosition = slides.findIndex((slide) => slide.index === current);
-  const base = currentPosition === -1 ? 0 : currentPosition;
-  const nextPosition = Math.max(0, Math.min(slides.length - 1, base + delta));
-  return slides[nextPosition];
+function nextSlideTarget(snapshot, slideCount) {
+  if (slideCount === 0) return { slide: 0, time: Infinity };
+  const timestamp = runtimeTimestamp(snapshot);
+  const slide = Math.min(timestamp.slide, slideCount);
+  const targetSlide =
+    timestamp.time === Infinity ? Math.min(slide + 1, slideCount) : slide;
+  return { slide: targetSlide, time: Infinity };
 }
 
-function previousSlide(slides, slide) {
-  const position = slides.findIndex((candidate) => candidate.index === slide?.index);
-  return position > 0 ? slides[position - 1] : undefined;
+function isAtSceneEnd(snapshot, slideCount) {
+  if (slideCount === 0) return false;
+  const timestamp = runtimeTimestamp(snapshot);
+  return timestamp.time === Infinity && timestamp.slide >= slideCount;
+}
+
+function runtimeTimestamp(snapshot) {
+  const timestamp = snapshot?.currentTimestamp;
+  if (!timestamp) return { slide: 0, time: Infinity };
+  return {
+    slide: Number.isInteger(timestamp.slide) ? timestamp.slide : 0,
+    time: timestamp.time === null ? Infinity : timestamp.time,
+  };
 }
 
 async function runRuntimeCommand(loop, command) {
@@ -279,8 +334,12 @@ async function runRuntimeCommand(loop, command) {
 
 function updateSlidePicker(host, currentButton, slides, activeSlide) {
   if (currentButton) {
-    const slide = slides.find((candidate) => candidate.index === activeSlide);
-    currentButton.textContent = slide?.name || `slide ${activeSlide}`;
+    if (activeSlide === 0) {
+      currentButton.textContent = "initial";
+    } else {
+      const slide = slides.find((candidate) => candidate.index === activeSlide);
+      currentButton.textContent = slide?.name || `slide ${activeSlide}`;
+    }
   }
   if (!host) return;
   for (const button of host.querySelectorAll("[data-slide-index]")) {
@@ -308,62 +367,32 @@ function updateRuntimeStatus(status, snapshot) {
   status.textContent = snapshot.isLoading ? "Loading..." : "";
 }
 
-function resolveDisplayTimestamp(snapshot, slides, override) {
+function resolveDisplayTimestamp(snapshot) {
   const timestamp = snapshot.currentTimestamp;
-  if (!timestamp) return { slide: 0, time: 0, isEnd: false, override };
-
-  if (override !== undefined) {
-    const overrideSlide = slideByIndex(slides, override);
-    if (boundaryBeforeSlide(slides, timestamp, overrideSlide)) {
-      return { slide: override, time: 0, isEnd: false, override };
-    }
-    override = undefined;
-  }
+  if (!timestamp) return { slide: 0, time: 0 };
 
   if (timestamp.time === null) {
-    const current = timestamp.slide;
-    if (current === 0) {
-      const firstSlide = slides[0];
-      return {
-        slide: firstSlide?.index ?? 0,
-        time: 0,
-        isEnd: false,
-        override: firstSlide?.index,
-      };
-    }
-
-    const nextSlide = adjacentSlide(slides, current, 1);
-    if (nextSlide && nextSlide.index !== current) {
-      return {
-        slide: nextSlide.index,
-        time: 0,
-        isEnd: false,
-        override: nextSlide.index,
-      };
-    }
-
-    return { slide: current, time: 0, isEnd: true, override };
+    return {
+      slide: timestamp.slide,
+      time: boundaryDisplayTime(snapshot, timestamp.slide),
+    };
   }
 
-  return { slide: timestamp.slide, time: timestamp.time, isEnd: false, override };
+  return { slide: timestamp.slide, time: timestamp.time };
 }
 
-function boundaryBeforeSlide(slides, timestamp, slide) {
-  if (!timestamp || !slide || timestamp.time !== null) return false;
-  const previous = previousSlide(slides, slide);
-  const boundarySlide = previous?.runtimeIndex ?? Math.max(0, slide.index - 1);
-  return timestamp.slide === boundarySlide;
+function boundaryDisplayTime(snapshot, slide) {
+  if (slide === 0) return 0;
+  const duration =
+    snapshot.slideDurations?.[slide - 1] ?? snapshot.minimumSlideDurations?.[slide - 1];
+  return typeof duration === "number" && Number.isFinite(duration) ? duration : 0;
 }
 
 function updateTimeLabel(label, timestamp) {
   if (!label) return;
-  if (timestamp.isEnd) {
-    label.textContent = "end";
-  } else {
-    label.textContent = `${
-      Number.isFinite(timestamp.time) ? timestamp.time.toFixed(2) : "0.00"
-    }s`;
-  }
+  label.textContent = `${
+    Number.isFinite(timestamp.time) ? timestamp.time.toFixed(2) : "0.00"
+  }s`;
 }
 
 function updateParameterPanel(
@@ -374,11 +403,12 @@ function updateParameterPanel(
   snapshot,
   allow,
   ranges,
+  controlCache,
   renderedParamKeys,
   setRenderedParamKeys,
 ) {
   if (!host) return;
-  const controls = collectControls(snapshot, allow);
+  const controls = collectControls(snapshot, allow, controlCache);
   const keys = controls.map((control) => control.key).join("|");
 
   block.classList.toggle("has-params", controls.length > 0);
@@ -408,15 +438,27 @@ function updateParameterPanel(
   }
 }
 
-function collectControls(snapshot, allow) {
+const HIDDEN_PARAMETER_NAMES = new Set(["camera", "background"]);
+
+function collectControls(snapshot, allow, cache) {
   const controls = [];
   const parameters = snapshot.parameters;
-  if (!parameters) return controls;
+  if (!parameters) {
+    return allow.size !== 0 && cache
+      ? Array.from(cache.values()).filter(
+          (control) =>
+            allow.has(control.allowKey) && !HIDDEN_PARAMETER_NAMES.has(control.allowKey),
+        )
+      : controls;
+  }
 
   for (const param of parameters.params ?? []) {
+    if (HIDDEN_PARAMETER_NAMES.has(param.name)) continue;
     if (allow.size !== 0 && !allow.has(param.name)) continue;
     controls.push({
       key: JSON.stringify(param.target),
+      cacheKey: `param:${param.name}`,
+      allowKey: param.name,
       label: param.name,
       group: "param",
       target: param.target,
@@ -426,10 +468,13 @@ function collectControls(snapshot, allow) {
   }
 
   for (const mesh of parameters.meshes ?? []) {
+    if (HIDDEN_PARAMETER_NAMES.has(mesh.name)) continue;
     if (allow.size !== 0 && !allow.has(mesh.name)) continue;
     for (const attribute of mesh.attributes ?? []) {
       controls.push({
         key: JSON.stringify(attribute.target),
+        cacheKey: `mesh:${mesh.name}.${attribute.name}`,
+        allowKey: mesh.name,
         label: `${mesh.name}.${attribute.name}`,
         group: "mesh",
         target: attribute.target,
@@ -439,7 +484,22 @@ function collectControls(snapshot, allow) {
     }
   }
 
-  return controls;
+  if (allow.size === 0 || !cache) {
+    return controls;
+  }
+
+  for (const control of controls) {
+    const cachedControl = cache.get(control.cacheKey);
+    if (cachedControl) {
+      Object.assign(cachedControl, control);
+    } else {
+      cache.set(control.cacheKey, control);
+    }
+  }
+
+  return Array.from(cache.values()).filter(
+    (control) => allow.has(control.allowKey) && !HIDDEN_PARAMETER_NAMES.has(control.allowKey),
+  );
 }
 
 function createControlRow(loop, control, range) {
@@ -473,10 +533,14 @@ function updateControlFromInput(loop, row, input, control) {
   const value = parseInputValue(input, input.dataset.kind ?? control.value.kind);
   if (!value) return;
 
+  control.value = value;
   const output = row.querySelector("output");
   if (output) output.textContent = formatParameterValue(value);
   input.title = formatParameterValue(value);
   loop.updateParameter(control.target, value);
+  void loop.step().catch((error) => {
+    console.error(error);
+  });
 }
 
 function syncControlLock(row, control) {

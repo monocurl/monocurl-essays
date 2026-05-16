@@ -1,6 +1,4 @@
 /* @ts-self-types="./web_runtime.d.ts" */
-import { monocurlJsErrorMessage, monocurlRenderLatexSvg } from './snippets/latex-1d1723dc86b272cc/inline0.js';
-
 
 export class Runtime {
     __destroy_into_raw() {
@@ -103,6 +101,9 @@ export class Runtime {
     set_preview_mode() {
         wasm.runtime_set_preview_mode(this.__wbg_ptr);
     }
+    set_web_mode() {
+        wasm.runtime_set_web_mode(this.__wbg_ptr);
+    }
     /**
      * @param {number} now_seconds
      * @returns {Promise<number>}
@@ -142,6 +143,10 @@ if (Symbol.dispose) Runtime.prototype[Symbol.dispose] = Runtime.prototype.free;
 function __wbg_get_imports() {
     const import0 = {
         __proto__: null,
+        __wbg___monocurlRenderLatexSvg_1385ddf3e2417a21: function() { return handleError(function (arg0, arg1, arg2, arg3) {
+            const ret = globalThis.__monocurlRenderLatexSvg(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
+            return ret;
+        }, arguments); },
         __wbg___wbindgen_is_function_2f0fd7ceb86e64c5: function(arg0) {
             const ret = typeof(arg0) === 'function';
             return ret;
@@ -166,17 +171,6 @@ function __wbg_get_imports() {
         },
         __wbg_call_a41d6421b30a32c5: function() { return handleError(function (arg0, arg1, arg2) {
             const ret = arg0.call(arg1, arg2);
-            return ret;
-        }, arguments); },
-        __wbg_monocurlJsErrorMessage_83726c491fb3514f: function(arg0, arg1) {
-            const ret = monocurlJsErrorMessage(arg1);
-            const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc_command_export, wasm.__wbindgen_realloc_command_export);
-            const len1 = WASM_VECTOR_LEN;
-            getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
-            getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
-        },
-        __wbg_monocurlRenderLatexSvg_67ac8871a6458a48: function() { return handleError(function (arg0, arg1, arg2, arg3) {
-            const ret = monocurlRenderLatexSvg(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
             return ret;
         }, arguments); },
         __wbg_new_typed_1137602701dc87d4: function(arg0, arg1) {
