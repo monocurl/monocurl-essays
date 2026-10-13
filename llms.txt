@@ -172,3 +172,11 @@ Visual machine learning lessons: least squares, gradient descent, logistic regre
 - [Overfitting: when a model memorizes instead of learning](https://www.monocurl.com/monocurl-essays/machine-learning/overfitting/index.md): Fit polynomials of degree 1, 3 and 9 to ten noisy points, watch training and test error part ways, and derive the bias-variance decomposition.
 - [k-means: finding groups nobody labeled](https://www.monocurl.com/monocurl-essays/machine-learning/k-means-clustering/index.md): Score a grouping by its sum of squared distances, lower it with Lloyd's two alternating steps, prove the algorithm must stop, and see where it goes wrong.
 
+## AI Proofs
+
+Written explanations of recent mathematical proofs found by AI models, starting with the cycle double cover conjecture, with every step drawn and the human work it rests on credited.
+
+- [The cycle double cover conjecture: bridges and paint](https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/index.md): Can cycles be laid on a graph so that every edge is used exactly twice? What the conjecture says, why bridges block it, and how far three colors get.
+- [Nowhere-zero flows and the cycle double cover conjecture](https://www.monocurl.com/monocurl-essays/ai-proofs/nowhere-zero-flows/index.md): Give every paint a code of bits and label each edge with the difference of its two coats. Why such labels always exist, and why they are only half a proof.
+- [Proof of the cycle double cover conjecture](https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-proof/index.md): The step that was missing for fifty years. Why the paints chosen at each node can always be made to agree, by counting the two ends of every edge.
+
