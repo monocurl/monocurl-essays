@@ -1,9 +1,18 @@
+const root = document.documentElement;
+root.classList.add("js");
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const siteRoot = document.body.dataset.root || "./";
+const READ_KEY = "monocurl-essays-read";
+
 let monocurlRuntime;
 
 function loadMonocurlRuntime() {
   monocurlRuntime ??= import(new URL("../vendor/monocurl/index.js", import.meta.url).href);
   return monocurlRuntime;
 }
+
+// ---- small behaviours ----
 
 document.addEventListener("click", async (event) => {
   const button = event.target.closest("[data-copy-code]");
@@ -12,19 +21,552 @@ document.addEventListener("click", async (event) => {
   const code = button.closest(".code-shell")?.querySelector("code");
   if (!code) return;
 
+  let label = "Copied";
   try {
     await navigator.clipboard.writeText(code.textContent ?? "");
-    button.textContent = "Copied";
-    window.setTimeout(() => {
-      button.textContent = "Copy";
-    }, 1200);
   } catch (_) {
-    button.textContent = "Failed";
-    window.setTimeout(() => {
-      button.textContent = "Copy";
-    }, 1200);
+    label = "Failed";
   }
+  button.textContent = label;
+  window.setTimeout(() => {
+    button.textContent = "Copy";
+  }, 1200);
 });
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest("[data-open-shared]")) return;
+  const shared = document.getElementById("shared-definitions");
+  if (shared) shared.open = true;
+});
+
+document.addEventListener("click", (event) => {
+  const option = event.target.closest(".quiz-option");
+  if (!option || option.classList.contains("is-right") || option.classList.contains("is-wrong")) {
+    return;
+  }
+  option.classList.add(option.hasAttribute("data-correct") ? "is-right" : "is-wrong");
+});
+
+// ---- reading state: progress line, section spy, read marks ----
+
+function readLessons() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(READ_KEY) || "[]"));
+  } catch (_) {
+    return new Set();
+  }
+}
+
+function markLessonRead(id) {
+  const read = readLessons();
+  if (read.has(id)) return;
+  read.add(id);
+  try {
+    localStorage.setItem(READ_KEY, JSON.stringify([...read]));
+  } catch (_) {
+    // private mode: marks just do not persist
+  }
+  decorateReadLessons();
+}
+
+function decorateReadLessons() {
+  const read = readLessons();
+  for (const link of document.querySelectorAll("[data-lesson]")) {
+    link.classList.toggle("is-read", read.has(link.dataset.lesson));
+  }
+
+  const start = document.querySelector("[data-continue]");
+  if (!start) return;
+  const rows = [...document.querySelectorAll(".lesson-row")];
+  const next = rows.findIndex((row) => !read.has(row.dataset.lesson));
+  if (next > 0) {
+    start.href = rows[next].href;
+    start.textContent = `Continue with lesson ${next + 1}`;
+  }
+}
+
+function setupReadingState() {
+  const article = document.querySelector(".essay");
+  const prose = article?.querySelector(".prose");
+  const tocLinks = [...document.querySelectorAll(".toc a")];
+  const headings = tocLinks
+    .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
+    .filter(Boolean);
+
+  let queued = false;
+  const update = () => {
+    queued = false;
+    if (!prose) return;
+
+    const rect = prose.getBoundingClientRect();
+    const span = rect.height - window.innerHeight * 0.6;
+    const progress = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 0;
+    root.style.setProperty("--read", progress.toFixed(4));
+    if (progress > 0.9 && article.dataset.essay) markLessonRead(article.dataset.essay);
+
+    const line = window.innerHeight * 0.3;
+    let active = -1;
+    headings.forEach((heading, index) => {
+      if (heading.getBoundingClientRect().top < line) active = index;
+    });
+    tocLinks.forEach((link, index) => link.classList.toggle("active", index === active));
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+  window.addEventListener("resize", update);
+  update();
+}
+
+// ---- figures: autoplay in view, scrub, step through ----
+
+function setupFigures() {
+  const stages = [...document.querySelectorAll(".fig-stage")];
+  if (!("IntersectionObserver" in window)) {
+    stages.filter((stage) => stage.dataset.player).forEach(setupPlayer);
+    return;
+  }
+
+  // fetch a video shortly before it scrolls into view
+  const warm = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const video = entry.target.querySelector("video");
+        if (video && video.preload !== "auto") {
+          video.preload = "auto";
+          video.load();
+        }
+        warm.unobserve(entry.target);
+      }
+    },
+    { rootMargin: "900px 0px" },
+  );
+
+  for (const stage of stages) {
+    if (stage.dataset.player) {
+      warm.observe(stage);
+      setupPlayer(stage);
+    }
+  }
+}
+
+function setupPlayer(stage) {
+  const video = stage.querySelector("video");
+  const toggle = stage.querySelector(".fig-toggle");
+  const bar = stage.querySelector(".fig-bar");
+  const figure = stage.closest(".fig") ?? stage.parentElement;
+  const mode = stage.dataset.player;
+  const steps = [...figure.querySelectorAll(".step-labels li")].map((label) => ({
+    end: Number(label.dataset.end),
+    label,
+  }));
+  const stepped = mode === "steps" && steps.length > 0;
+  const prevButton = figure.querySelector("[data-step-prev]");
+  const nextButton = figure.querySelector("[data-step-next]");
+  const nextText = nextButton?.querySelector("span");
+  const count = figure.querySelector(".step-count");
+  const END_HOLD_MS = 1800;
+  const EPSILON = 0.04;
+
+  let visible = false;
+  let userPaused = reduceMotion;
+  let step = 0;
+  let stepDone = false;
+  let started = false;
+  let holdTimer = 0;
+  let frame = 0;
+
+  if (reduceMotion && video.dataset.still) video.poster = video.dataset.still;
+
+  const duration = () =>
+    Number.isFinite(video.duration) && video.duration > 0
+      ? video.duration
+      : Number(stage.dataset.duration) || 1;
+  const stepEnd = (index) => Math.min(steps[index].end, duration()) - EPSILON;
+
+  const paint = () => {
+    const progress = Math.min(1, video.currentTime / duration());
+    stage.style.setProperty("--progress", progress.toFixed(4));
+    bar?.setAttribute("aria-valuenow", String(Math.round(progress * 100)));
+  };
+
+  const syncSteps = () => {
+    if (!stepped) return;
+    steps.forEach((entry, index) => entry.label.classList.toggle("active", index === step));
+    if (count) count.textContent = `${step + 1} / ${steps.length}`;
+    if (prevButton) prevButton.disabled = step === 0 && !stepDone;
+    const atEnd = step === steps.length - 1 && stepDone;
+    if (nextText) nextText.textContent = atEnd ? "Replay" : "Next";
+    nextButton?.setAttribute("aria-label", atEnd ? "Replay from the start" : "Next step");
+  };
+
+  const setState = () => {
+    const ended = !stepped && mode === "once" && video.ended;
+    stage.classList.toggle("is-ended", ended);
+    stage.classList.toggle("is-paused", video.paused && !ended && (userPaused || stepped));
+    toggle?.setAttribute(
+      "aria-label",
+      ended ? "Replay animation" : video.paused ? "Play animation" : "Pause animation",
+    );
+  };
+
+  const tick = () => {
+    paint();
+    if (stepped && !video.paused && video.currentTime >= stepEnd(step)) {
+      // no seek back to the exact boundary: a frame of overshoot is invisible, and a
+      // seek would stall on hosts without range requests
+      video.pause();
+      stepDone = true;
+      syncSteps();
+      setState();
+      return;
+    }
+    if (!video.paused) frame = requestAnimationFrame(tick);
+  };
+
+  const play = () => {
+    window.clearTimeout(holdTimer);
+    if (video.preload !== "auto") video.preload = "auto";
+    started = true;
+    video
+      .play()
+      .then(() => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(tick);
+        setState();
+      })
+      .catch(() => {
+        userPaused = true;
+        setState();
+      });
+  };
+
+  const pause = () => {
+    window.clearTimeout(holdTimer);
+    video.pause();
+    setState();
+  };
+
+  const playStep = (index) => {
+    step = index;
+    stepDone = false;
+    userPaused = false;
+    const from = index === 0 ? 0 : stepEnd(index - 1);
+    if (Math.abs(video.currentTime - from) > 0.08 || video.currentTime > stepEnd(index)) {
+      video.currentTime = from;
+    }
+    syncSteps();
+    play();
+  };
+
+  const showStepEnd = (index) => {
+    pause();
+    step = index;
+    stepDone = true;
+    video.currentTime = stepEnd(index);
+    paint();
+    syncSteps();
+  };
+
+  const next = () => {
+    if (!stepDone) return showStepEnd(step);
+    playStep(step === steps.length - 1 ? 0 : step + 1);
+  };
+
+  const previous = () => {
+    if (step === 0) {
+      pause();
+      stepDone = false;
+      video.currentTime = 0;
+      paint();
+      syncSteps();
+      return;
+    }
+    showStepEnd(step - 1);
+  };
+
+  const togglePlayback = () => {
+    if (stepped) return next();
+    if (video.ended) {
+      userPaused = false;
+      video.currentTime = 0;
+      return play();
+    }
+    userPaused = !video.paused;
+    if (video.paused) play();
+    else pause();
+  };
+
+  video.addEventListener("ended", () => {
+    paint();
+    setState();
+    if (mode !== "loop" || userPaused) return;
+    holdTimer = window.setTimeout(() => {
+      if (!visible || userPaused) return;
+      video.currentTime = 0;
+      play();
+    }, END_HOLD_MS);
+  });
+  video.addEventListener("pause", setState);
+  video.addEventListener("seeked", paint);
+
+  stage.addEventListener("click", (event) => {
+    if (event.target.closest(".fig-bar")) return;
+    togglePlayback();
+  });
+  nextButton?.addEventListener("click", next);
+  prevButton?.addEventListener("click", previous);
+  figure.addEventListener("keydown", (event) => {
+    if (!stepped || event.target.closest(".fig-source")) return;
+    if (event.key === "ArrowRight") next();
+    else if (event.key === "ArrowLeft") previous();
+    else return;
+    event.preventDefault();
+  });
+
+  if (bar) setupScrubber(bar, video, duration, {
+    begin: () => {
+      const wasPlaying = !video.paused;
+      pause();
+      return wasPlaying;
+    },
+    end: (wasPlaying) => {
+      if (stepped) {
+        step = Math.max(0, steps.findIndex((_, index) => video.currentTime <= stepEnd(index) + EPSILON));
+        stepDone = video.currentTime >= stepEnd(step) - EPSILON;
+        syncSteps();
+        if (wasPlaying && !stepDone) play();
+      } else if (wasPlaying) {
+        play();
+      }
+      setState();
+    },
+    paint,
+  });
+
+  new IntersectionObserver(
+    ([entry]) => {
+      visible = entry.isIntersecting && entry.intersectionRatio >= 0.55;
+      if (!visible) {
+        if (!video.paused) pause();
+        return;
+      }
+      if (userPaused) return;
+      if (stepped) {
+        if (!started) playStep(0);
+        else if (!stepDone) play();
+      } else if (!video.ended || mode === "loop") {
+        if (video.ended) video.currentTime = 0;
+        play();
+      }
+    },
+    { threshold: [0, 0.55, 1] },
+  ).observe(stage);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && !video.paused) pause();
+    else if (!document.hidden && visible && !userPaused && !(stepped && stepDone) && !video.ended) play();
+  });
+
+  syncSteps();
+  setState();
+}
+
+function setupScrubber(bar, video, duration, hooks) {
+  let wasPlaying = false;
+
+  const seek = (event) => {
+    const rect = bar.getBoundingClientRect();
+    const fraction = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    video.currentTime = fraction * duration();
+    hooks.paint();
+  };
+
+  bar.addEventListener("pointerdown", (event) => {
+    bar.setPointerCapture(event.pointerId);
+    bar.classList.add("is-dragging");
+    wasPlaying = hooks.begin();
+    seek(event);
+  });
+  bar.addEventListener("pointermove", (event) => {
+    if (bar.classList.contains("is-dragging")) seek(event);
+  });
+  const release = () => {
+    if (!bar.classList.contains("is-dragging")) return;
+    bar.classList.remove("is-dragging");
+    hooks.end(wasPlaying);
+  };
+  bar.addEventListener("pointerup", release);
+  bar.addEventListener("pointercancel", release);
+  bar.addEventListener("keydown", (event) => {
+    const delta = event.key === "ArrowRight" ? 0.5 : event.key === "ArrowLeft" ? -0.5 : 0;
+    if (!delta) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const playing = hooks.begin();
+    video.currentTime = Math.min(duration(), Math.max(0, video.currentTime + delta));
+    hooks.paint();
+    hooks.end(playing);
+  });
+}
+
+// ---- search ----
+
+function setupSearch() {
+  const openers = document.querySelectorAll("[data-search-open]");
+  if (openers.length === 0 || typeof HTMLDialogElement === "undefined") return;
+
+  let dialog;
+  let input;
+  let list;
+  let index;
+  let results = [];
+  let active = 0;
+
+  const build = () => {
+    dialog = document.createElement("dialog");
+    dialog.className = "search-modal";
+    dialog.setAttribute("aria-label", "Search lessons");
+    input = document.createElement("input");
+    input.className = "search-input";
+    input.type = "search";
+    input.placeholder = "Search lessons: derivative, Bayes, eigenvector…";
+    input.autocomplete = "off";
+    input.spellcheck = false;
+    list = document.createElement("ul");
+    list.className = "search-results";
+    dialog.append(input, list);
+    document.body.append(dialog);
+
+    input.addEventListener("input", () => {
+      active = 0;
+      render();
+    });
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        const step = event.key === "ArrowDown" ? 1 : -1;
+        active = (active + step + results.length) % Math.max(1, results.length);
+        render();
+      } else if (event.key === "Enter" && results[active]) {
+        window.location.href = siteRoot + results[active].u;
+      }
+    });
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  };
+
+  const score = (entry, words) => {
+    let total = 0;
+    for (const word of words) {
+      const title = entry.t.toLowerCase();
+      if (title.startsWith(word)) total += 8;
+      else if (title.includes(word)) total += 5;
+      else if (entry.k.toLowerCase().includes(word)) total += 3;
+      else if (entry.s.toLowerCase().includes(word)) total += 2;
+      else if (entry.d.toLowerCase().includes(word)) total += 1;
+      else return 0;
+    }
+    return total;
+  };
+
+  const render = () => {
+    const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    results = (index ?? [])
+      .map((entry) => ({ entry, rank: words.length ? score(entry, words) : 1 }))
+      .filter((item) => item.rank > 0)
+      .sort((a, b) => b.rank - a.rank)
+      .slice(0, 12)
+      .map((item) => item.entry);
+
+    list.textContent = "";
+    if (results.length === 0) {
+      const empty = document.createElement("li");
+      empty.className = "search-empty";
+      empty.textContent = index ? "No lesson matches that yet." : "Loading…";
+      list.append(empty);
+      return;
+    }
+    results.forEach((entry, position) => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = siteRoot + entry.u;
+      link.classList.toggle("active", position === active);
+      const series = document.createElement("span");
+      series.className = "search-series";
+      series.textContent = entry.s;
+      const title = document.createElement("b");
+      title.textContent = entry.t;
+      const summary = document.createElement("small");
+      summary.textContent = entry.d;
+      link.append(series, title, summary);
+      item.append(link);
+      list.append(item);
+      if (position === active) link.scrollIntoView({ block: "nearest" });
+    });
+  };
+
+  const open = async () => {
+    if (!dialog) build();
+    if (dialog.open) return;
+    dialog.showModal();
+    input.value = "";
+    input.focus();
+    render();
+    if (!index) {
+      try {
+        index = await (await fetch(`${siteRoot}search.json`)).json();
+      } catch (_) {
+        index = [];
+      }
+      render();
+    }
+  };
+
+  openers.forEach((opener) => opener.addEventListener("click", open));
+  document.addEventListener("keydown", (event) => {
+    const typing = event.target.closest?.("input, textarea, select, [contenteditable]");
+    if ((event.key === "/" && !typing) || (event.key === "k" && (event.metaKey || event.ctrlKey))) {
+      event.preventDefault();
+      void open();
+    }
+  });
+}
+
+decorateReadLessons();
+// ---- theme: follows the system until the reader picks one ----
+
+function setupTheme() {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+  toggle.addEventListener("click", () => {
+    const dark =
+      root.dataset.theme === "dark" ||
+      (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    root.dataset.theme = dark ? "light" : "dark";
+    try {
+      localStorage.setItem("monocurl-essays-theme", root.dataset.theme);
+    } catch {
+      // private mode: the choice lasts for this page only
+    }
+  });
+}
+
+setupTheme();
+setupReadingState();
+setupFigures();
+setupSearch();
+
+// ---- live figures (wasm runtime) ----
 
 for (const block of document.querySelectorAll("[data-mcl-slideshow]")) {
   prepareLazySlideshow(block);

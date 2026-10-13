@@ -1,0 +1,174 @@
+# Monocurl Essays
+
+> Free visual lessons in algebra, geometry, trigonometry, calculus, linear algebra, probability, statistics, physics and more. Every idea is drawn and animated, and every figure's source is open.
+
+Each lesson is self-contained and free to read. A plain markdown copy of every lesson is at the lesson URL followed by `index.md`. Figures are animations written in the Monocurl language (https://www.monocurl.com); the markdown copies describe each figure by its caption.
+
+## Algebra
+
+Visual algebra lessons: negative numbers, the distributive law, completing the square, the quadratic formula, slope, systems of equations and exponents, each one drawn and animated.
+
+- [Why is a negative times a negative positive?](https://www.monocurl.com/monocurl-essays/algebra/negative-times-negative/index.md): Multiplying by a negative number flips the number line about zero, and two flips cancel. We see it, then prove it from the distributive law.
+- [The distributive law as a picture: FOIL and (a+b)²](https://www.monocurl.com/monocurl-essays/algebra/distributive-law-area/index.md): Cutting a rectangle into pieces explains FOIL, why (a+b)² has a middle term 2ab, and why (a+b)(a−b) = a² − b². Each identity is then proved.
+- [Completing the square and the quadratic formula](https://www.monocurl.com/monocurl-essays/algebra/completing-the-square/index.md): Solve x² + 6x = 16 by rearranging a square and a rectangle into a bigger square with one corner missing, then turn that picture into the quadratic formula.
+- [What slope means, and why y = mx + b is a line](https://www.monocurl.com/monocurl-essays/algebra/slope-and-lines/index.md): A phone bill that grows by the same amount per gigabyte plots as a straight line. Similar triangles explain why, and give slope and y = mx + b their meaning.
+- [Solving two equations at once: where lines meet](https://www.monocurl.com/monocurl-essays/algebra/systems-of-equations/index.md): Ten heads and 28 legs: how many chickens and rabbits? Each clue is a line of possibilities, and elimination pivots a line about the point where they cross.
+- [Why x⁰ = 1, and negative and fractional exponents](https://www.monocurl.com/monocurl-essays/algebra/exponents/index.md): Powers of 2 halve as the exponent drops, and one rule, add exponents when you multiply, forces 2⁰ = 1, 2⁻¹ = 1/2 and 2^(1/2) = √2.
+- [Absolute value is distance: solving |x − a| < r](https://www.monocurl.com/monocurl-essays/algebra/inequalities-absolute-value/index.md): Read |x − 3| < 2 as "x is within 2 of 3" and the answer, 1 < x < 5, can be seen on a number line. Also why multiplying by a negative flips an inequality.
+
+## Geometry
+
+Visual geometry lessons with animated proofs: angle sums, the Pythagorean theorem, the area of a circle, similar triangles, inscribed angles and the volume of cones and spheres.
+
+- [Why the angles of a triangle add to 180°](https://www.monocurl.com/monocurl-essays/geometry/triangle-angle-sum/index.md): Tear the corners off any triangle and they line up along a straight edge. A single parallel line explains why, and a sphere shows the line is needed.
+- [The Pythagorean theorem: a proof you can see](https://www.monocurl.com/monocurl-essays/geometry/pythagorean-theorem/index.md): Why the squares on the two short sides of a right triangle add up to the square on the long side, proved by moving four triangles inside a box.
+- [Why the area of a circle is πr²](https://www.monocurl.com/monocurl-essays/geometry/area-of-a-circle/index.md): The number π is defined by the distance around a circle. Cutting the circle into sectors, and then into rings, shows why the same π gives its area.
+- [Similar triangles and why area grows as the square](https://www.monocurl.com/monocurl-essays/geometry/similar-triangles/index.md): Scaling multiplies every length by one factor and keeps every angle. That explains shadows, maps, and why a pizza twice as wide is four times the pizza.
+- [The inscribed angle theorem and Thales' semicircle](https://www.monocurl.com/monocurl-essays/geometry/inscribed-angle/index.md): From every point on one arc of a circle, a chord is seen under the same angle, half the angle at the center. Two isosceles triangles explain why.
+- [Why a cone is a third of a cylinder, and a sphere's volume](https://www.monocurl.com/monocurl-essays/geometry/volume-of-cone-and-sphere/index.md): A cone holds exactly one third of the cylinder around it. A cube cut into three pyramids shows why, and the same slicing idea gives the volume of a sphere.
+
+## Trigonometry
+
+Visual trigonometry lessons: the unit circle, radians, the Pythagorean identity, angle addition formulas, the laws of sines and cosines, and sine waves.
+
+- [The unit circle: sine and cosine as coordinates](https://www.monocurl.com/monocurl-essays/trigonometry/unit-circle/index.md): Sine and cosine start as ratios in a right triangle, which stops at 90°. Placing the triangle in a circle of radius 1 extends them to every angle.
+- [Radians: measuring an angle by the arc it cuts](https://www.monocurl.com/monocurl-essays/trigonometry/radians/index.md): A radian is the angle whose arc is as long as the radius. With it, arc length, sector area and the rule sin θ ≈ θ need no conversion constants.
+- [Pythagorean identity: why sin² + cos² = 1](https://www.monocurl.com/monocurl-essays/trigonometry/pythagorean-identity/index.md): The identity sin²θ + cos²θ = 1 is the Pythagorean theorem on the unit circle. Tangent and secant are lengths in the same picture and give two more.
+- [Angle addition formulas: sin(a + b) from one picture](https://www.monocurl.com/monocurl-essays/trigonometry/angle-addition/index.md): The sine of a sum is not the sum of the sines. Two stacked right triangles show what it is, and a rotated chord proves the formulas for every angle.
+- [Law of cosines and law of sines: solving any triangle](https://www.monocurl.com/monocurl-essays/trigonometry/law-of-sines-and-cosines/index.md): The law of cosines is the Pythagorean theorem corrected for angles other than 90°. With the law of sines it solves any triangle, two-answer case included.
+- [Sine waves: amplitude, frequency and phase](https://www.monocurl.com/monocurl-essays/trigonometry/sine-waves/index.md): A sine wave is the height of a point on a turning wheel. Amplitude, frequency and phase change the wheel, and explain how two waves add, cancel or beat.
+
+## Precalculus
+
+Visual precalculus lessons: function transformations, exponential growth and e, logarithms, complex numbers as rotations, Euler's formula and geometric series.
+
+- [Shifting and stretching graphs: why f(x - 2) moves right](https://www.monocurl.com/monocurl-essays/precalculus/functions-and-transformations/index.md): Adding 2 outside a function lifts its graph, but subtracting 2 inside moves it right. A graph is a set of points, and tracking one point explains why.
+- [Compound interest and where e comes from](https://www.monocurl.com/monocurl-essays/precalculus/exponential-growth-and-e/index.md): Pay 100% interest in more and more instalments and a dollar grows to 2, 2.25, 2.44, 2.61, and then stops short of 2.72. That ceiling is the number e.
+- [What a logarithm is: turning multiplication into addition](https://www.monocurl.com/monocurl-essays/precalculus/logarithms/index.md): A logarithm answers "what exponent gives this number?". Because exponents add when powers multiply, logarithms turn every product into a sum.
+- [Complex numbers: why multiplying by i is a quarter turn](https://www.monocurl.com/monocurl-essays/precalculus/complex-numbers/index.md): No number on the line squares to -1. Read multiplication by -1 as a half turn and the missing number appears: a quarter turn, which needs a second axis.
+- [Euler's formula: why e^(iπ) = -1](https://www.monocurl.com/monocurl-essays/precalculus/eulers-formula/index.md): You cannot multiply e by itself iπ times, so the famous equation needs a definition first. Compound interest supplies one, and it leads around a circle.
+- [Geometric series, and why 0.999... equals 1](https://www.monocurl.com/monocurl-essays/precalculus/geometric-series/index.md): What it means to add infinitely many numbers, when a geometric series has a sum, the formula a/(1 - r) with proof, and why 0.999... is exactly 1.
+- [Roots, factors and the shape of a polynomial](https://www.monocurl.com/monocurl-essays/precalculus/polynomials-and-roots/index.md): A cubic crosses the x axis once or three times, never exactly twice. The factor theorem, multiplicity and the leading term explain why, with proofs.
+
+## Calculus
+
+Visual calculus lessons: what a derivative is, the power, product and chain rules, limits, integrals, the fundamental theorem of calculus and Taylor series, with animations of every idea.
+
+- [What is a derivative? Speed at a single instant](https://www.monocurl.com/monocurl-essays/calculus/what-is-a-derivative/index.md): A falling ball has a speed at every instant, but an instant is too short to measure a speed over. The derivative is the precise idea that resolves this.
+- [Why the derivative of x² is 2x: the power rule from pictures](https://www.monocurl.com/monocurl-essays/calculus/power-rule/index.md): A growing square gains two thin strips and a tiny corner. That picture explains the 2 in 2x, and counting the same pieces in general proves the power rule.
+- [The product rule and the chain rule, seen](https://www.monocurl.com/monocurl-essays/calculus/product-and-chain-rule/index.md): A rectangle whose sides both change explains the product rule, and a nudge passed along a chain of number lines explains the chain rule. Both are then proved.
+- [Why the derivative of sine is cosine](https://www.monocurl.com/monocurl-essays/calculus/derivative-of-sine/index.md): Nudge a point around the unit circle and a tiny triangle appears, similar to the big one. Its legs are the derivatives of sine and cosine.
+- [What is a limit? The epsilon-delta definition, explained](https://www.monocurl.com/monocurl-essays/calculus/limits/index.md): A limit is a game. You name a tolerance, I answer with a window. From that one definition we prove the limit laws and the squeeze theorem.
+- [What is an integral? Adding up to get area](https://www.monocurl.com/monocurl-essays/calculus/integrals/index.md): Distance from a changing speed, found by slicing time into pieces and adding. The definite integral is the limit of those sums, defined precisely and computed.
+- [The fundamental theorem of calculus, explained and proved](https://www.monocurl.com/monocurl-essays/calculus/fundamental-theorem/index.md): Why area and slope undo each other. The rate at which an area grows is the height of the curve, and that turns every integral into a subtraction.
+- [Taylor series: building functions out of polynomials](https://www.monocurl.com/monocurl-essays/calculus/taylor-series/index.md): How a calculator finds cos(0.3) with only addition and multiplication, why factorials appear, how large the error can be, and where the method breaks.
+- [Maxima and minima: where the slope is zero](https://www.monocurl.com/monocurl-essays/calculus/optimization/index.md): To fence the largest field or make the cheapest can, look where the derivative is zero, and also at the ends. Why that works, and when it does not.
+
+## Linear Algebra
+
+Visual linear algebra lessons: vectors, matrices as linear transformations, matrix multiplication, determinants, dot products and eigenvectors, shown as animations of the plane.
+
+- [What is a vector? Arrows, lists of numbers, and adding them](https://www.monocurl.com/monocurl-essays/linear-algebra/vectors/index.md): A vector is a list of numbers read as a movement. Adding entry by entry matches placing arrows tip to tail, and two non-parallel arrows reach the whole plane.
+- [A matrix is a transformation of space](https://www.monocurl.com/monocurl-essays/linear-algebra/matrices-as-transformations/index.md): A 2x2 matrix moves every point of the plane, and its two columns say where the basis arrows land. Linearity is why those four numbers settle everything else.
+- [Why matrix multiplication is defined the way it is](https://www.monocurl.com/monocurl-essays/linear-algebra/matrix-multiplication/index.md): Multiplying matrices means doing one transformation after another. The rows-times-columns rule, the failure of AB = BA and associativity all follow from that.
+- [The determinant is how much area gets scaled](https://www.monocurl.com/monocurl-essays/linear-algebra/determinant/index.md): A matrix multiplies every area in the plane by one number, ad - bc. That explains its sign, why det(AB) = det(A)det(B), and which matrices can be undone.
+- [The dot product: projection, angle and why the formula works](https://www.monocurl.com/monocurl-essays/linear-algebra/dot-product/index.md): Multiply matching coordinates and add. The result measures how far one arrow reaches along another, which gives angles, projections and Cauchy-Schwarz.
+- [Eigenvectors: the directions a transformation leaves alone](https://www.monocurl.com/monocurl-essays/linear-algebra/eigenvectors/index.md): Most arrows are knocked off their line by a matrix. The few that are only stretched are its eigenvectors, and they turn matrix powers into powers of numbers.
+- [Solving Ax = b by undoing a transformation](https://www.monocurl.com/monocurl-essays/linear-algebra/linear-systems-and-inverses/index.md): A linear system asks which vector a matrix sends to b. That view explains when there is one solution, none or a whole line, and what the inverse matrix does.
+
+## Multivariable Calculus
+
+Visual multivariable calculus lessons: contour maps, partial derivatives, the gradient, Lagrange multipliers, double integrals, divergence, curl and Green's theorem.
+
+- [Surfaces and contour maps: functions of two variables](https://www.monocurl.com/monocurl-essays/multivariable-calculus/functions-of-two-variables/index.md): A hiking map shows a mountain on flat paper. Its contour lines are the level sets of a function of two variables, and their spacing measures steepness.
+- [The gradient: which way is uphill?](https://www.monocurl.com/monocurl-essays/multivariable-calculus/partial-derivatives-and-gradient/index.md): On a hillside the slope depends on the direction you face. Partial derivatives give two of those slopes, and the gradient packs all of them into one arrow.
+- [Lagrange multipliers: the best point on a path](https://www.monocurl.com/monocurl-essays/multivariable-calculus/lagrange-multipliers/index.md): The highest point of a trail is where the trail just touches a contour line. There the gradients of the height and of the constraint are parallel.
+- [Double integrals: volume under a surface](https://www.monocurl.com/monocurl-essays/multivariable-calculus/double-integrals/index.md): Volume under a surface is a limit of sums of thin columns. Slicing turns it into two ordinary integrals, and polar coordinates handle round regions.
+- [Divergence and curl: reading a vector field](https://www.monocurl.com/monocurl-essays/multivariable-calculus/divergence-and-curl/index.md): Two numbers at each point of a flow. Divergence is the net outflow from a tiny square per unit area, and curl is the circulation around it per unit area.
+- [Green's theorem: the inside read from the boundary](https://www.monocurl.com/monocurl-essays/multivariable-calculus/greens-theorem/index.md): A walk around the edge of a region, adding up a vector field along the way, equals the integral of the field's curl over the inside. Here is why.
+
+## Probability
+
+Visual probability lessons: sample spaces, conditional probability, Bayes' rule, the birthday paradox, expected value, the binomial distribution and the law of large numbers.
+
+- [What probability means: counting equally likely outcomes](https://www.monocurl.com/monocurl-essays/probability/sample-spaces/index.md): Is a total of 7 with two dice three times as likely as a 12, or six times? Settling it leads to sample spaces, events and the rules every probability obeys.
+- [Bayes' rule: why a positive test is usually a false alarm](https://www.monocurl.com/monocurl-essays/probability/conditional-probability-bayes/index.md): A 99% accurate test for a rare disease comes back positive, and the chance you are sick is about 9%. Conditional probability and Bayes' theorem explain why.
+- [The birthday paradox: why 23 people is enough](https://www.monocurl.com/monocurl-essays/probability/birthday-paradox/index.md): In a room of 23 people, two probably share a birthday. The exact formula, why the answer grows like a square root, and what the model assumes.
+- [Expected value and the surprising power of adding averages](https://www.monocurl.com/monocurl-essays/probability/expected-value/index.md): The expected value of a random quantity is its long-run average. Expected values add even for dependent quantities, which solves the hat-check problem.
+- [Binomial distribution: Pascal's triangle and a Galton board](https://www.monocurl.com/monocurl-essays/probability/binomial-distribution/index.md): Balls bouncing through rows of pegs pile up in the middle. Counting their paths gives Pascal's triangle and the binomial formula, with its mean and variance.
+- [The law of large numbers, and the gambler's fallacy](https://www.monocurl.com/monocurl-essays/probability/law-of-large-numbers/index.md): A fair coin has no memory, yet its share of heads settles at one half. The weak law of large numbers says exactly how, and Chebyshev's inequality proves it.
+- [Monty Hall problem: why switching wins two times in three](https://www.monocurl.com/monocurl-essays/probability/monty-hall/index.md): Three doors, one car, and a host who opens a goat door. Switching wins 2/3 of the time. Three solutions, and why the answer depends on what the host knows.
+
+## Statistics
+
+Visual statistics lessons: mean and standard deviation, the normal distribution, the central limit theorem, standard error, confidence intervals, p-values and regression.
+
+- [Mean, median and standard deviation: what each one says](https://www.monocurl.com/monocurl-essays/statistics/mean-median-spread/index.md): The mean is a balance point, the median is a middle, and the standard deviation is a typical distance. Each is the best answer to a precise question.
+- [The normal distribution and the 68-95-99.7 rule](https://www.monocurl.com/monocurl-essays/statistics/normal-distribution/index.md): A histogram with ever narrower bins settles onto a curve whose areas are probabilities. For the bell curve, those areas give the 68-95-99.7 rule and z-scores.
+- [The central limit theorem: why bell curves are everywhere](https://www.monocurl.com/monocurl-essays/statistics/central-limit-theorem/index.md): One die is flat, but the average of 30 dice follows a bell curve. The central limit theorem says when this happens, how fast, and when it fails.
+- [Standard error: how 1,000 people speak for a country](https://www.monocurl.com/monocurl-essays/statistics/sampling-and-standard-error/index.md): A random sample's accuracy depends on its own size, not on the population's. We prove the square-root law for the standard error and see its limits.
+- [What a 95% confidence interval does and does not say](https://www.monocurl.com/monocurl-essays/statistics/confidence-intervals/index.md): We derive the interval mean ± 1.96 standard errors, test its 95% coverage by simulation, and go through the common misreadings and why each is wrong.
+- [P-values and hypothesis tests without the mysticism](https://www.monocurl.com/monocurl-essays/statistics/p-values/index.md): A coin lands heads 60 times in 100. We compute the exact p-value, define the two kinds of error, and show with Bayes' theorem what a p-value is not.
+- [Correlation and the line of best fit, derived](https://www.monocurl.com/monocurl-essays/statistics/correlation-and-regression/index.md): We derive the least-squares line, define the correlation r and prove it lies between -1 and 1, then explain regression to the mean and why r is not causation.
+
+## Discrete Mathematics
+
+Visual discrete mathematics lessons: permutations and combinations, Pascal's triangle, the pigeonhole principle, induction, graph theory, modular arithmetic and the probabilistic method.
+
+- [Permutations and combinations: counting without listing](https://www.monocurl.com/monocurl-essays/discrete-math/permutations-and-combinations/index.md): Five runners and three medals give 60 podiums but only 10 groups of medalists. The product rule, permutations and combinations, each one proved.
+- [Pascal's triangle and the binomial theorem](https://www.monocurl.com/monocurl-essays/discrete-math/pascals-triangle/index.md): Routes across a street grid and the coefficients of (a + b)^n are the same numbers. We prove Pascal's rule, the binomial theorem and the row sums by counting.
+- [The pigeonhole principle: obvious, and surprisingly strong](https://www.monocurl.com/monocurl-essays/discrete-math/pigeonhole-principle/index.md): More objects than boxes forces two into one box. We prove the principle and its general form, then use it on problems where finding the boxes is the hard part.
+- [Mathematical induction: infinitely many dominoes](https://www.monocurl.com/monocurl-essays/discrete-math/induction/index.md): How a finite argument proves infinitely many statements. Induction stated exactly, used on a sum and a tiling, and a famous false proof taken apart.
+- [Bridges of Königsberg: Euler paths and circuits](https://www.monocurl.com/monocurl-essays/discrete-math/graphs-euler-paths/index.md): Seven bridges and a walk that nobody could find. Counting the edges at each vertex proves it cannot exist and settles every draw-without-lifting puzzle.
+- [Fibonacci numbers and thinking recursively](https://www.monocurl.com/monocurl-essays/discrete-math/fibonacci-and-recursion/index.md): Count the ways to climb a staircase and the Fibonacci numbers appear. Their rule, two identities, Binet's formula and the golden ratio, all proved.
+- [Clock arithmetic: modular arithmetic and why it works](https://www.monocurl.com/monocurl-essays/discrete-math/modular-arithmetic/index.md): Arithmetic with remainders, made exact. Congruences, the divisibility tests for 9 and 11, when division is allowed, and Fermat's little theorem, with proofs.
+- [The probabilistic method: Ramsey numbers by coin flips](https://www.monocurl.com/monocurl-essays/discrete-math/the-probabilistic-method/index.md): Six party guests always include three mutual friends or three mutual strangers. For larger parties, the best lower bounds come from coloring at random.
+
+## Logic and Proof
+
+Visual lessons in logic and proof: truth tables, implication and the contrapositive, quantifiers, proof by contradiction, sets and Cantor's diagonal argument.
+
+- [Truth tables: and, or, not as calculation](https://www.monocurl.com/monocurl-essays/logic/truth-tables/index.md): The word "or" has two meanings in English. Truth tables fix one, and turn questions about what sentences mean into finite calculations you can check row by row.
+- [If-then statements: converse and contrapositive](https://www.monocurl.com/monocurl-essays/logic/implication/index.md): When is "if P then Q" true? One table answers it, shows why the contrapositive says the same thing and the converse does not, and solves the four-card puzzle.
+- [Quantifiers: for all, there exists, and negation](https://www.monocurl.com/monocurl-essays/logic/quantifiers/index.md): Everyone loves someone" has two meanings. Quantifiers separate them, show how to negate each, and turn the epsilon-delta definition of a limit into a game.
+- [Proof by contradiction: why √2 is not a fraction](https://www.monocurl.com/monocurl-essays/logic/proof-by-contradiction/index.md): No fraction squares to exactly 2. To prove it, assume one does and follow the assumption until it breaks. That method is proof by contradiction.
+- [Sets, Venn diagrams and inclusion-exclusion](https://www.monocurl.com/monocurl-essays/logic/sets-and-counting/index.md): Union, intersection and complement defined exactly, De Morgan's laws for sets, and how to count a union of overlapping sets without counting anything twice.
+- [Cantor's diagonal argument: some infinities are bigger](https://www.monocurl.com/monocurl-essays/logic/infinity-cantor/index.md): Sizes of infinite sets are compared by pairing. The integers and the fractions pair off with the counting numbers, and the real numbers provably do not.
+
+## Physics
+
+Visual physics lessons: velocity and acceleration, Newton's second law, projectile motion, conservation of energy, momentum, simple harmonic motion and waves.
+
+- [Position, velocity and acceleration: reading motion graphs](https://www.monocurl.com/monocurl-essays/physics/motion-graphs/index.md): Slope turns a position graph into velocity and velocity into acceleration; area goes back. The constant-acceleration equations come from one trapezoid.
+- [Newton's second law, F = ma: what force really does](https://www.monocurl.com/monocurl-essays/physics/newtons-second-law/index.md): Forces change an object's velocity; none is needed to keep it moving. Newton's three laws, free-body diagrams, the incline and the Atwood machine in full.
+- [Projectile motion: dropped and fired bullets land together](https://www.monocurl.com/monocurl-essays/physics/projectile-motion/index.md): Gravity acts only on the vertical part of a projectile's motion. From that come the parabola, the time of flight, the range, and why 45 degrees goes farthest.
+- [Conservation of energy: a roller coaster's bookkeeping](https://www.monocurl.com/monocurl-essays/physics/energy-conservation/index.md): Work, kinetic and potential energy, and the work-energy theorem, derived from F = ma and used to find a coaster's speed anywhere and the height a loop needs.
+- [Momentum and collisions: what survives a crash](https://www.monocurl.com/monocurl-essays/physics/momentum-collisions/index.md): Momentum, impulse and Newton's third law, and how they fix the outcome of sticky and bouncy collisions when energy alone gives the wrong answer.
+- [Simple harmonic motion: springs and pendulums](https://www.monocurl.com/monocurl-essays/physics/simple-harmonic-motion/index.md): Why a mass on a spring takes the same time per swing however far it is pulled: Hooke's law and the shadow of circular motion, and why a pendulum nearly does.
+- [Waves and interference: how two ripples can cancel](https://www.monocurl.com/monocurl-essays/physics/waves-and-interference/index.md): What a wave is, why its speed is frequency times wavelength, and how adding waves gives the quiet lines of an interference pattern and the notes of a string.
+- [Circular motion, gravity and why the Moon doesn't fall](https://www.monocurl.com/monocurl-essays/physics/circular-motion-and-orbits/index.md): The acceleration v²/r of circular motion, derived from the velocity triangle, and what it says about satellites, Kepler's third law and weightlessness.
+
+## Economics
+
+Visual economics lessons: supply and demand, elasticity, marginal cost and revenue, consumer surplus and taxes, compound interest, comparative advantage and game theory.
+
+- [Supply and demand: where a price comes from](https://www.monocurl.com/monocurl-essays/economics/supply-and-demand/index.md): Line up buyers by what they would pay and sellers by what they would accept. The price where the two counts match is the one that leaves nobody turned away.
+- [Elasticity: when raising the price lowers revenue](https://www.monocurl.com/monocurl-essays/economics/elasticity/index.md): Revenue is a rectangle under the demand curve. Elasticity compares percentage changes in quantity and price, and decides whether a price rise grows it.
+- [Thinking at the margin: marginal cost and revenue](https://www.monocurl.com/monocurl-essays/economics/marginal-thinking/index.md): The right question is what one more unit adds to revenue and to cost. Why averages mislead, why sunk costs drop out, and why profit peaks where MR meets MC.
+- [Consumer surplus, and what a tax destroys](https://www.monocurl.com/monocurl-essays/economics/surplus-and-taxes/index.md): Measure what a market is worth to its buyers and sellers, then tax it. Some of the loss reaches nobody, and who bears the rest depends on slopes, not the law.
+- [Compound interest and the time value of money](https://www.monocurl.com/monocurl-essays/economics/compound-interest-present-value/index.md): Why a dollar today is worth more than a dollar later, how to price future payments, and where the rule of 72 and the mortgage formula come from.
+- [Comparative advantage: why trade helps both sides](https://www.monocurl.com/monocurl-essays/economics/comparative-advantage/index.md): Someone who is better at everything still gains by trading with someone who is worse at everything. Opportunity cost explains why, and a short proof shows when.
+- [The prisoner's dilemma and Nash equilibrium](https://www.monocurl.com/monocurl-essays/economics/game-theory/index.md): How to read a payoff table, find best responses and Nash equilibria, mix strategies when no cell is stable, and see why repeated play can sustain cooperation.
+
+## Machine Learning
+
+Visual machine learning lessons: least squares, gradient descent, logistic regression, neurons and neural networks, backpropagation and overfitting.
+
+- [What "learning" means: fitting a line to data](https://www.monocurl.com/monocurl-essays/machine-learning/fitting-a-line/index.md): A model is a formula with adjustable numbers, a loss scores its misses, and training lowers the loss. All three, worked by hand on four house prices.
+- [Gradient descent: learning by walking downhill](https://www.monocurl.com/monocurl-essays/machine-learning/gradient-descent/index.md): Derive the gradient descent update from the tangent line, prove exactly which learning rates converge on a parabola, and watch it train a line on real data.
+- [Classification: drawing a line between yes and no](https://www.monocurl.com/monocurl-essays/machine-learning/logistic-regression/index.md): Logistic regression from the ground up: the sigmoid from log-odds, cross-entropy from maximum likelihood, the gradient derived in full, and why XOR defeats it.
+- [What a neural network computes](https://www.monocurl.com/monocurl-essays/machine-learning/neural-networks/index.md): A neuron is a linear score followed by a bend. Sums of bends build bumps, bumps build any curve, and two neurons solve XOR. All with explicit weights.
+- [Backpropagation: the chain rule, organized](https://www.monocurl.com/monocurl-essays/machine-learning/backpropagation/index.md): Run a tiny network forward with real numbers, get every weight's slope in one backward pass, prove the delta recursion, and check it by nudging each weight.
+- [Overfitting: when a model memorizes instead of learning](https://www.monocurl.com/monocurl-essays/machine-learning/overfitting/index.md): Fit polynomials of degree 1, 3 and 9 to ten noisy points, watch training and test error part ways, and derive the bias-variance decomposition.
+- [k-means: finding groups nobody labeled](https://www.monocurl.com/monocurl-essays/machine-learning/k-means-clustering/index.md): Score a grouping by its sum of squared distances, lower it with Lloyd's two alternating steps, prove the algorithm must stop, and see where it goes wrong.
+

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Monocurl Essays</title>
+  <subtitle>Free visual lessons in algebra, geometry, trigonometry, calculus, linear algebra, probability, statistics, physics and more. Every idea is drawn and animated, and every figure&#39;s source is open.</subtitle>
+  <link href="https://www.monocurl.com/monocurl-essays/"/>
+  <link rel="self" href="https://www.monocurl.com/monocurl-essays/feed.xml"/>
+  <id>https://www.monocurl.com/monocurl-essays/</id>
+  <updated>2026-10-11T00:00:00Z</updated>
+  <author><name>Monocurl</name></author>
+  <entry>
+    <title>Why is a negative times a negative positive?</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/negative-times-negative/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/negative-times-negative/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Multiplying by a negative number flips the number line about zero, and two flips cancel. We see it, then prove it from the distributive law.</summary>
+  </entry>
+  <entry>
+    <title>The distributive law as a picture: FOIL and (a+b)²</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/distributive-law-area/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/distributive-law-area/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Cutting a rectangle into pieces explains FOIL, why (a+b)² has a middle term 2ab, and why (a+b)(a−b) = a² − b². Each identity is then proved.</summary>
+  </entry>
+  <entry>
+    <title>Completing the square and the quadratic formula</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/completing-the-square/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/completing-the-square/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Solve x² + 6x = 16 by rearranging a square and a rectangle into a bigger square with one corner missing, then turn that picture into the quadratic formula.</summary>
+  </entry>
+  <entry>
+    <title>What slope means, and why y = mx + b is a line</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/slope-and-lines/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/slope-and-lines/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>A phone bill that grows by the same amount per gigabyte plots as a straight line. Similar triangles explain why, and give slope and y = mx + b their meaning.</summary>
+  </entry>
+  <entry>
+    <title>Solving two equations at once: where lines meet</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/systems-of-equations/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/systems-of-equations/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Ten heads and 28 legs: how many chickens and rabbits? Each clue is a line of possibilities, and elimination pivots a line about the point where they cross.</summary>
+  </entry>
+  <entry>
+    <title>Why x⁰ = 1, and negative and fractional exponents</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/exponents/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/exponents/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Powers of 2 halve as the exponent drops, and one rule, add exponents when you multiply, forces 2⁰ = 1, 2⁻¹ = 1/2 and 2^(1/2) = √2.</summary>
+  </entry>
+  <entry>
+    <title>Absolute value is distance: solving |x − a| &lt; r</title>
+    <link href="https://www.monocurl.com/monocurl-essays/algebra/inequalities-absolute-value/"/>
+    <id>https://www.monocurl.com/monocurl-essays/algebra/inequalities-absolute-value/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Algebra"/>
+    <summary>Read |x − 3| &lt; 2 as &quot;x is within 2 of 3&quot; and the answer, 1 &lt; x &lt; 5, can be seen on a number line. Also why multiplying by a negative flips an inequality.</summary>
+  </entry>
+  <entry>
+    <title>Why the angles of a triangle add to 180°</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/triangle-angle-sum/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/triangle-angle-sum/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>Tear the corners off any triangle and they line up along a straight edge. A single parallel line explains why, and a sphere shows the line is needed.</summary>
+  </entry>
+  <entry>
+    <title>The Pythagorean theorem: a proof you can see</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/pythagorean-theorem/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/pythagorean-theorem/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>Why the squares on the two short sides of a right triangle add up to the square on the long side, proved by moving four triangles inside a box.</summary>
+  </entry>
+  <entry>
+    <title>Why the area of a circle is πr²</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/area-of-a-circle/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/area-of-a-circle/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>The number π is defined by the distance around a circle. Cutting the circle into sectors, and then into rings, shows why the same π gives its area.</summary>
+  </entry>
+  <entry>
+    <title>Similar triangles and why area grows as the square</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/similar-triangles/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/similar-triangles/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>Scaling multiplies every length by one factor and keeps every angle. That explains shadows, maps, and why a pizza twice as wide is four times the pizza.</summary>
+  </entry>
+  <entry>
+    <title>The inscribed angle theorem and Thales&#39; semicircle</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/inscribed-angle/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/inscribed-angle/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>From every point on one arc of a circle, a chord is seen under the same angle, half the angle at the center. Two isosceles triangles explain why.</summary>
+  </entry>
+  <entry>
+    <title>Why a cone is a third of a cylinder, and a sphere&#39;s volume</title>
+    <link href="https://www.monocurl.com/monocurl-essays/geometry/volume-of-cone-and-sphere/"/>
+    <id>https://www.monocurl.com/monocurl-essays/geometry/volume-of-cone-and-sphere/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Geometry"/>
+    <summary>A cone holds exactly one third of the cylinder around it. A cube cut into three pyramids shows why, and the same slicing idea gives the volume of a sphere.</summary>
+  </entry>
+  <entry>
+    <title>The unit circle: sine and cosine as coordinates</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/unit-circle/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/unit-circle/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>Sine and cosine start as ratios in a right triangle, which stops at 90°. Placing the triangle in a circle of radius 1 extends them to every angle.</summary>
+  </entry>
+  <entry>
+    <title>Radians: measuring an angle by the arc it cuts</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/radians/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/radians/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>A radian is the angle whose arc is as long as the radius. With it, arc length, sector area and the rule sin θ ≈ θ need no conversion constants.</summary>
+  </entry>
+  <entry>
+    <title>Pythagorean identity: why sin² + cos² = 1</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/pythagorean-identity/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/pythagorean-identity/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>The identity sin²θ + cos²θ = 1 is the Pythagorean theorem on the unit circle. Tangent and secant are lengths in the same picture and give two more.</summary>
+  </entry>
+  <entry>
+    <title>Angle addition formulas: sin(a + b) from one picture</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/angle-addition/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/angle-addition/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>The sine of a sum is not the sum of the sines. Two stacked right triangles show what it is, and a rotated chord proves the formulas for every angle.</summary>
+  </entry>
+  <entry>
+    <title>Law of cosines and law of sines: solving any triangle</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/law-of-sines-and-cosines/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/law-of-sines-and-cosines/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>The law of cosines is the Pythagorean theorem corrected for angles other than 90°. With the law of sines it solves any triangle, two-answer case included.</summary>
+  </entry>
+  <entry>
+    <title>Sine waves: amplitude, frequency and phase</title>
+    <link href="https://www.monocurl.com/monocurl-essays/trigonometry/sine-waves/"/>
+    <id>https://www.monocurl.com/monocurl-essays/trigonometry/sine-waves/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Trigonometry"/>
+    <summary>A sine wave is the height of a point on a turning wheel. Amplitude, frequency and phase change the wheel, and explain how two waves add, cancel or beat.</summary>
+  </entry>
+  <entry>
+    <title>Shifting and stretching graphs: why f(x - 2) moves right</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/functions-and-transformations/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/functions-and-transformations/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>Adding 2 outside a function lifts its graph, but subtracting 2 inside moves it right. A graph is a set of points, and tracking one point explains why.</summary>
+  </entry>
+  <entry>
+    <title>Compound interest and where e comes from</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/exponential-growth-and-e/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/exponential-growth-and-e/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>Pay 100% interest in more and more instalments and a dollar grows to 2, 2.25, 2.44, 2.61, and then stops short of 2.72. That ceiling is the number e.</summary>
+  </entry>
+  <entry>
+    <title>What a logarithm is: turning multiplication into addition</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/logarithms/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/logarithms/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>A logarithm answers &quot;what exponent gives this number?&quot;. Because exponents add when powers multiply, logarithms turn every product into a sum.</summary>
+  </entry>
+  <entry>
+    <title>Complex numbers: why multiplying by i is a quarter turn</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/complex-numbers/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/complex-numbers/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>No number on the line squares to -1. Read multiplication by -1 as a half turn and the missing number appears: a quarter turn, which needs a second axis.</summary>
+  </entry>
+  <entry>
+    <title>Euler&#39;s formula: why e^(iπ) = -1</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/eulers-formula/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/eulers-formula/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>You cannot multiply e by itself iπ times, so the famous equation needs a definition first. Compound interest supplies one, and it leads around a circle.</summary>
+  </entry>
+  <entry>
+    <title>Geometric series, and why 0.999... equals 1</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/geometric-series/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/geometric-series/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>What it means to add infinitely many numbers, when a geometric series has a sum, the formula a/(1 - r) with proof, and why 0.999... is exactly 1.</summary>
+  </entry>
+  <entry>
+    <title>Roots, factors and the shape of a polynomial</title>
+    <link href="https://www.monocurl.com/monocurl-essays/precalculus/polynomials-and-roots/"/>
+    <id>https://www.monocurl.com/monocurl-essays/precalculus/polynomials-and-roots/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Precalculus"/>
+    <summary>A cubic crosses the x axis once or three times, never exactly twice. The factor theorem, multiplicity and the leading term explain why, with proofs.</summary>
+  </entry>
+  <entry>
+    <title>What is a derivative? Speed at a single instant</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/what-is-a-derivative/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/what-is-a-derivative/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>A falling ball has a speed at every instant, but an instant is too short to measure a speed over. The derivative is the precise idea that resolves this.</summary>
+  </entry>
+  <entry>
+    <title>Why the derivative of x² is 2x: the power rule from pictures</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/power-rule/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/power-rule/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>A growing square gains two thin strips and a tiny corner. That picture explains the 2 in 2x, and counting the same pieces in general proves the power rule.</summary>
+  </entry>
+  <entry>
+    <title>The product rule and the chain rule, seen</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/product-and-chain-rule/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/product-and-chain-rule/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>A rectangle whose sides both change explains the product rule, and a nudge passed along a chain of number lines explains the chain rule. Both are then proved.</summary>
+  </entry>
+  <entry>
+    <title>Why the derivative of sine is cosine</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/derivative-of-sine/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/derivative-of-sine/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>Nudge a point around the unit circle and a tiny triangle appears, similar to the big one. Its legs are the derivatives of sine and cosine.</summary>
+  </entry>
+  <entry>
+    <title>What is a limit? The epsilon-delta definition, explained</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/limits/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/limits/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>A limit is a game. You name a tolerance, I answer with a window. From that one definition we prove the limit laws and the squeeze theorem.</summary>
+  </entry>
+  <entry>
+    <title>What is an integral? Adding up to get area</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/integrals/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/integrals/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>Distance from a changing speed, found by slicing time into pieces and adding. The definite integral is the limit of those sums, defined precisely and computed.</summary>
+  </entry>
+  <entry>
+    <title>The fundamental theorem of calculus, explained and proved</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/fundamental-theorem/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/fundamental-theorem/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>Why area and slope undo each other. The rate at which an area grows is the height of the curve, and that turns every integral into a subtraction.</summary>
+  </entry>
+  <entry>
+    <title>Taylor series: building functions out of polynomials</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/taylor-series/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/taylor-series/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>How a calculator finds cos(0.3) with only addition and multiplication, why factorials appear, how large the error can be, and where the method breaks.</summary>
+  </entry>
+  <entry>
+    <title>Maxima and minima: where the slope is zero</title>
+    <link href="https://www.monocurl.com/monocurl-essays/calculus/optimization/"/>
+    <id>https://www.monocurl.com/monocurl-essays/calculus/optimization/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Calculus"/>
+    <summary>To fence the largest field or make the cheapest can, look where the derivative is zero, and also at the ends. Why that works, and when it does not.</summary>
+  </entry>
+  <entry>
+    <title>What is a vector? Arrows, lists of numbers, and adding them</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/vectors/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/vectors/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>A vector is a list of numbers read as a movement. Adding entry by entry matches placing arrows tip to tail, and two non-parallel arrows reach the whole plane.</summary>
+  </entry>
+  <entry>
+    <title>A matrix is a transformation of space</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/matrices-as-transformations/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/matrices-as-transformations/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>A 2x2 matrix moves every point of the plane, and its two columns say where the basis arrows land. Linearity is why those four numbers settle everything else.</summary>
+  </entry>
+  <entry>
+    <title>Why matrix multiplication is defined the way it is</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/matrix-multiplication/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/matrix-multiplication/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>Multiplying matrices means doing one transformation after another. The rows-times-columns rule, the failure of AB = BA and associativity all follow from that.</summary>
+  </entry>
+  <entry>
+    <title>The determinant is how much area gets scaled</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/determinant/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/determinant/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>A matrix multiplies every area in the plane by one number, ad - bc. That explains its sign, why det(AB) = det(A)det(B), and which matrices can be undone.</summary>
+  </entry>
+  <entry>
+    <title>The dot product: projection, angle and why the formula works</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/dot-product/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/dot-product/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>Multiply matching coordinates and add. The result measures how far one arrow reaches along another, which gives angles, projections and Cauchy-Schwarz.</summary>
+  </entry>
+  <entry>
+    <title>Eigenvectors: the directions a transformation leaves alone</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/eigenvectors/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/eigenvectors/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>Most arrows are knocked off their line by a matrix. The few that are only stretched are its eigenvectors, and they turn matrix powers into powers of numbers.</summary>
+  </entry>
+  <entry>
+    <title>Solving Ax = b by undoing a transformation</title>
+    <link href="https://www.monocurl.com/monocurl-essays/linear-algebra/linear-systems-and-inverses/"/>
+    <id>https://www.monocurl.com/monocurl-essays/linear-algebra/linear-systems-and-inverses/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Linear Algebra"/>
+    <summary>A linear system asks which vector a matrix sends to b. That view explains when there is one solution, none or a whole line, and what the inverse matrix does.</summary>
+  </entry>
+  <entry>
+    <title>Surfaces and contour maps: functions of two variables</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/functions-of-two-variables/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/functions-of-two-variables/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>A hiking map shows a mountain on flat paper. Its contour lines are the level sets of a function of two variables, and their spacing measures steepness.</summary>
+  </entry>
+  <entry>
+    <title>The gradient: which way is uphill?</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/partial-derivatives-and-gradient/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/partial-derivatives-and-gradient/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>On a hillside the slope depends on the direction you face. Partial derivatives give two of those slopes, and the gradient packs all of them into one arrow.</summary>
+  </entry>
+  <entry>
+    <title>Lagrange multipliers: the best point on a path</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/lagrange-multipliers/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/lagrange-multipliers/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>The highest point of a trail is where the trail just touches a contour line. There the gradients of the height and of the constraint are parallel.</summary>
+  </entry>
+  <entry>
+    <title>Double integrals: volume under a surface</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/double-integrals/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/double-integrals/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>Volume under a surface is a limit of sums of thin columns. Slicing turns it into two ordinary integrals, and polar coordinates handle round regions.</summary>
+  </entry>
+  <entry>
+    <title>Divergence and curl: reading a vector field</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/divergence-and-curl/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/divergence-and-curl/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>Two numbers at each point of a flow. Divergence is the net outflow from a tiny square per unit area, and curl is the circulation around it per unit area.</summary>
+  </entry>
+  <entry>
+    <title>Green&#39;s theorem: the inside read from the boundary</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/greens-theorem/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/greens-theorem/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>A walk around the edge of a region, adding up a vector field along the way, equals the integral of the field&#39;s curl over the inside. Here is why.</summary>
+  </entry>
+  <entry>
+    <title>What probability means: counting equally likely outcomes</title>
+    <link href="https://www.monocurl.com/monocurl-essays/probability/sample-spaces/"/>
+    <id>https://www.monocurl.com/monocurl-essays/probability/sample-spaces/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Probability"/>
+    <summary>Is a total of 7 with two dice three times as likely as a 12, or six times? Settling it leads to sample spaces, events and the rules every probability obeys.</summary>
+  </entry>
+  <entry>
+    <title>Bayes&#39; rule: why a positive test is usually a false alarm</title>
+    <link href="https://www.monocurl.com/monocurl-essays/probability/conditional-probability-bayes/"/>
+    <id>https://www.monocurl.com/monocurl-essays/probability/conditional-probability-bayes/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Probability"/>
+    <summary>A 99% accurate test for a rare disease comes back positive, and the chance you are sick is about 9%. Conditional probability and Bayes&#39; theorem explain why.</summary>
+  </entry>
+</feed>
