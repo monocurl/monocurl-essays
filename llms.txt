@@ -174,9 +174,7 @@ Visual machine learning lessons: least squares, gradient descent, logistic regre
 
 ## AI Proofs
 
-Written explanations of recent mathematical proofs found by AI models, starting with the cycle double cover conjecture, with every step drawn and the human work it rests on credited.
+Written explanations of recent mathematical proofs found by AI models, one essay per proof, with every step drawn and the earlier human work credited.
 
-- [The cycle double cover conjecture: bridges and paint](https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/index.md): Can cycles be laid on a graph so that every edge is used exactly twice? What the conjecture says, why bridges block it, and how far three colors get.
-- [Nowhere-zero flows and the cycle double cover conjecture](https://www.monocurl.com/monocurl-essays/ai-proofs/nowhere-zero-flows/index.md): Give every paint a code of bits and label each edge with the difference of its two coats. Why such labels always exist, and why they are only half a proof.
-- [Proof of the cycle double cover conjecture](https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-proof/index.md): The step that was missing for fifty years. Why the paints chosen at each node can always be made to agree, by counting the two ends of every edge.
+- [The cycle double cover conjecture, and its proof](https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/index.md): Every bridgeless graph has cycles that use each edge exactly twice. The whole proof, from bridges and paint to three-bit labels and a parity count.
 

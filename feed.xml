@@ -5,34 +5,16 @@
   <link href="https://www.monocurl.com/monocurl-essays/"/>
   <link rel="self" href="https://www.monocurl.com/monocurl-essays/feed.xml"/>
   <id>https://www.monocurl.com/monocurl-essays/</id>
-  <updated>2026-10-12T00:00:00Z</updated>
+  <updated>2026-10-13T00:00:00Z</updated>
   <author><name>Monocurl</name></author>
   <entry>
-    <title>The cycle double cover conjecture: bridges and paint</title>
+    <title>The cycle double cover conjecture, and its proof</title>
     <link href="https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/"/>
     <id>https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/</id>
     <published>2026-10-12T00:00:00Z</published>
-    <updated>2026-10-12T00:00:00Z</updated>
+    <updated>2026-10-13T00:00:00Z</updated>
     <category term="AI Proofs"/>
-    <summary>Can cycles be laid on a graph so that every edge is used exactly twice? What the conjecture says, why bridges block it, and how far three colors get.</summary>
-  </entry>
-  <entry>
-    <title>Nowhere-zero flows and the cycle double cover conjecture</title>
-    <link href="https://www.monocurl.com/monocurl-essays/ai-proofs/nowhere-zero-flows/"/>
-    <id>https://www.monocurl.com/monocurl-essays/ai-proofs/nowhere-zero-flows/</id>
-    <published>2026-10-12T00:00:00Z</published>
-    <updated>2026-10-12T00:00:00Z</updated>
-    <category term="AI Proofs"/>
-    <summary>Give every paint a code of bits and label each edge with the difference of its two coats. Why such labels always exist, and why they are only half a proof.</summary>
-  </entry>
-  <entry>
-    <title>Proof of the cycle double cover conjecture</title>
-    <link href="https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-proof/"/>
-    <id>https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-proof/</id>
-    <published>2026-10-12T00:00:00Z</published>
-    <updated>2026-10-12T00:00:00Z</updated>
-    <category term="AI Proofs"/>
-    <summary>The step that was missing for fifty years. Why the paints chosen at each node can always be made to agree, by counting the two ends of every edge.</summary>
+    <summary>Every bridgeless graph has cycles that use each edge exactly twice. The whole proof, from bridges and paint to three-bit labels and a parity count.</summary>
   </entry>
   <entry>
     <title>Why is a negative times a negative positive?</title>
@@ -456,5 +438,23 @@
     <updated>2026-10-11T00:00:00Z</updated>
     <category term="Multivariable Calculus"/>
     <summary>Two numbers at each point of a flow. Divergence is the net outflow from a tiny square per unit area, and curl is the circulation around it per unit area.</summary>
+  </entry>
+  <entry>
+    <title>Green&#39;s theorem: the inside read from the boundary</title>
+    <link href="https://www.monocurl.com/monocurl-essays/multivariable-calculus/greens-theorem/"/>
+    <id>https://www.monocurl.com/monocurl-essays/multivariable-calculus/greens-theorem/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Multivariable Calculus"/>
+    <summary>A walk around the edge of a region, adding up a vector field along the way, equals the integral of the field&#39;s curl over the inside. Here is why.</summary>
+  </entry>
+  <entry>
+    <title>What probability means: counting equally likely outcomes</title>
+    <link href="https://www.monocurl.com/monocurl-essays/probability/sample-spaces/"/>
+    <id>https://www.monocurl.com/monocurl-essays/probability/sample-spaces/</id>
+    <published>2026-10-11T00:00:00Z</published>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <category term="Probability"/>
+    <summary>Is a total of 7 with two dice three times as likely as a 12, or six times? Settling it leads to sample spaces, events and the rules every probability obeys.</summary>
   </entry>
 </feed>

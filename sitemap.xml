@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.monocurl.com/monocurl-essays/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://www.monocurl.com/monocurl-essays/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://www.monocurl.com/monocurl-essays/algebra/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://www.monocurl.com/monocurl-essays/algebra/negative-times-negative/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://www.monocurl.com/monocurl-essays/algebra/distributive-law-area/</loc><lastmod>2026-10-11</lastmod></url>
@@ -113,8 +113,6 @@
   <url><loc>https://www.monocurl.com/monocurl-essays/machine-learning/backpropagation/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://www.monocurl.com/monocurl-essays/machine-learning/overfitting/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://www.monocurl.com/monocurl-essays/machine-learning/k-means-clustering/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/nowhere-zero-flows/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-proof/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://www.monocurl.com/monocurl-essays/ai-proofs/cycle-double-cover-conjecture/</loc><lastmod>2026-10-13</lastmod></url>
 </urlset>
